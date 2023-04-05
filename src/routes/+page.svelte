@@ -1,24 +1,27 @@
-<div class = "container">
-   
-    <div class="input-editor">Hello</div>
+<script>
+    import Input from "../input.svelte";
+</script>
 
-    <div class="output-editor" >Bro</div>
+
+<div class="container">
+    <div class="side-nav">Side</div>
+    <div class="editor"><Input/></div>
 </div>
 
 <style>
     .container {
         margin: 0px;
-        height: 100vh;
+        height: 100%;
         display: flex;
-        background-color: yellow;
+        /* background-color: yellow; */
     }
 
-    .input-editor{
-        background-color: green;
-        flex: 1 1 auto
+    .side-nav {
+        background-color: orange;
+        width: 15em;
     }
-    .output-editor{
-        background-color: blue;
-        flex: 1 1 auto
+    .editor {
+        /* background-color: green; */
+        flex: 1 1 auto;
     }
 </style>
