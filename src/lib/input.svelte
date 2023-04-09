@@ -1,10 +1,8 @@
-<script lang ="ts">
-    import { Resume } from "../input_model";
+<script lang = "ts">
     import About from "./about.svelte";
     import Address from "./address.svelte";
     import Education from "./education.svelte";
     import Experience from "./experience.svelte";
-
     import item from "../resume.json";
     import { send_to_gpt } from "../openai";
 
@@ -12,14 +10,13 @@
     let ai_descriptions = [];
 
     async function showlog() {
-        // console.log(JSON.stringify(resume))
         ai_descriptions = await send_to_gpt(JSON.stringify(resume));
-        for (let i=0; i< ai_descriptions.improved_job_roles.length; i++){
-            resume.work_experience[i].description = ai_descriptions.improved_job_roles[i].job_description
+        console.log(ai_descriptions);
+        for (let i = 0; i < ai_descriptions.improved_job_roles.length; i++) {
+            resume.work_experience[i].description =
+                ai_descriptions.improved_job_roles[i].job_description;
         }
-        // ai_descriptions.forEach((item, i) => {
-        //     resume.work_experience[i].description = item.job_description;
-        // });
+
         console.log(await send_to_gpt(JSON.stringify(resume)));
     }
 </script>
