@@ -1,11 +1,12 @@
 <script>
-    import Input from "../input.svelte";
+    import Input from '$lib/input.svelte';
 </script>
 
 
 <div class="container">
     <div class="side-nav">Side</div>
     <div class="editor"><Input/></div>
+    <div class="output">Out</div>
 </div>
 
 <style>
@@ -13,7 +14,6 @@
         margin: 0px;
         height: 100%;
         display: flex;
-        /* background-color: yellow; */
     }
 
     .side-nav {
@@ -21,7 +21,10 @@
         width: 15em;
     }
     .editor {
-        /* background-color: green; */
         flex: 1 1 auto;
+    }
+
+    .output{
+        flex: 3 1 auto;
     }
 </style>
