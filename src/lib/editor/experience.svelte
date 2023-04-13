@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { WorkExperience } from "../input_model";
-    import "../styles/form.css";
+    import { WorkExperience } from "../../input_model";
+    import "../../styles/form.css";
     let exp1: WorkExperience = new WorkExperience();
     export let work_exps = [exp1];
 

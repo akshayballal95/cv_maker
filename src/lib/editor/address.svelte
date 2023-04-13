@@ -1,6 +1,6 @@
 <script>
-    import { Address } from "../input_model";
-    import "../styles/form.css";
+    import { Address } from "../../input_model";
+    import "../../styles/form.css";
     export let address = new Address();
 </script>
 

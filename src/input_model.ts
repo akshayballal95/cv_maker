@@ -20,6 +20,21 @@ export class WorkExperience {
 
 }
 
+export class Project {
+  constructor() {
+    this.title = "";
+    this.start_date = "";
+    this.end_date = "";
+    this.description = "";
+  }
+
+  title: string;
+  start_date: string;
+  end_date: string;
+  description: string
+
+}
+
 export class Address {
   constructor() {
     this.address_line_1 = "";
@@ -60,11 +75,15 @@ export class PersonalInformation {
     this.last_name = "";
     this.phone_number = "";
     this.email = "";
+    this.position="";
+    this.introduction="";
   }
   first_name: string;
   last_name: string;
   phone_number: string;
   email: string;
+  position:string;
+  introduction:string;
 }
 
 export class Resume {
@@ -73,9 +92,11 @@ export class Resume {
     this.education = new Education();
     this.address = new Address();
     this.work_experience = [new WorkExperience()];
+    this.projects = [new Project()];
   }
 
   personal_information: PersonalInformation;
+  projects: Project[];
   address: Address;
   education: Education;
   work_experience: WorkExperience[];

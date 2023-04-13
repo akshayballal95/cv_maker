@@ -1,6 +1,6 @@
 <script>
-    import { Education } from "../input_model";
-    import "../styles/form.css";
+    import { Education } from "../../input_model";
+    import "../../styles/form.css";
 
     export let education = new Education();
 </script>

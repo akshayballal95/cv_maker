@@ -3,6 +3,8 @@
         "first_name": "Akshay",
         "last_name": "Ballal",
         "phone_number": "7762844196",
+        "introduction":"",
+        "position":"",
         "email": "arballal95@gmail.com"
     },
     "address": {
@@ -27,6 +29,34 @@
             "start_date": "03/07/2017",
             "end_date": "03/07/2023",
             "description": "Product roadmaps and strategies\n7 patents in additive manufacturing\nreviews"
+        },
+        {
+            "company_name": "Fabheads Automation",
+            "job_title": "Mechanical Design Engineer",
+            "city": "Chennai",
+            "country": "India",
+            "start_date": "03/07/2017",
+            "end_date": "03/07/2023",
+            "description": "CAD Designs \n BOM \n Drawings"
+        },
+        {
+            "company_name": "Carnot Technologies",
+            "job_title": "Product Design Intern",
+            "city": "Chennai",
+            "country": "India",
+            "start_date": "03/07/2017",
+            "end_date": "03/07/2023",
+            "description": "Market Research \n Thermal Analysis"
         }
+    ],
+
+    "projects": [
+        {
+            "title": "Rolling Stone Ball",
+            "start_date": "03/07/2017",
+            "end_date": "03/07/2023",
+            "description": ""
+        }
+      
     ]
 }
