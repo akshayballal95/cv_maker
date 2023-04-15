@@ -18,7 +18,7 @@
         <ProfileImage bind:avatar = {resume_object.avatar}/>
         <About bind:personal_information={resume_object.personal_information} />
         <Address bind:address={resume_object.address} />
-        <Education bind:education={resume_object.education} />
+        <Education bind:educations={resume_object.education} />
         <Experience bind:work_exps={resume_object.work_experience} />
         <Projects bind:projects = {resume_object.projects } />
     </div>

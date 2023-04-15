@@ -4,6 +4,7 @@
     export let resume_object: Resume;
     import avatar from "$lib/assets/photo.png";
     import oip from "$lib/assets/default.jpg";
+    import "../../styles/loader.css"
     $: resume = resume_object;
 </script>
 
@@ -19,7 +20,19 @@
 </svelte:head>
 
 <body>
+
+
     <div class="a4-1">
+        {#if $loading == true}
+        <div class="loading-container">
+            <div> populating fields based on information provided</div>
+
+            <div class="loader">Loading...</div>
+            <div> this may take a second... </div>
+        </div>
+       
+        {/if}
+  
         <div class="a4-1-child" />
         <div class="introduction-wrapper">
             <div class="introduction">
@@ -52,7 +65,7 @@
             <div class="instance-parent">
                 {#each resume.work_experience as work, i}
                     <div class="parent">
-                        <b class="b">2019 - 2022</b>
+                        <b class="b">{work.start_date} - {work.end_date}</b>
                         <div class="company-name">
                             {work.company_name}
                         </div>
@@ -71,6 +84,7 @@
                 {/each}
             </div>
         </div>
+        <div ></div>
         <div class="a4-1-inner">
             <div class="mariana-anderson-parent">
                 <div class="component-1">
@@ -112,20 +126,23 @@
             <div class="frame-child1" />
         </div>
         <div class="component-4-parent">
+
+            {#each resume.education as education}
             <div class="mariana-anderson-parent">
+                <div class="mariana-anderson">2008</div>
+                <b class="bachelor-of-engineering">{education.institute_name}</b>
+                <div class="birla-institute-of">
+                    {education.degree}
+                </div>
+            </div>
+            {/each}
+            <!-- <div class="mariana-anderson-parent">
                 <div class="mariana-anderson">2008</div>
                 <b class="bachelor-of-engineering">Bachelor of Engineering</b>
                 <div class="birla-institute-of">
                     Birla Institute of Technology
                 </div>
-            </div>
-            <div class="mariana-anderson-parent">
-                <div class="mariana-anderson">2008</div>
-                <b class="bachelor-of-engineering">Bachelor of Engineering</b>
-                <div class="birla-institute-of">
-                    Birla Institute of Technology
-                </div>
-            </div>
+            </div> -->
         </div>
         <div class="uiux-parent">
             <b class="uiux"
@@ -178,7 +195,9 @@
         {:else}
             <img class="photo-2022-11-07-12-51-02-1-icon" alt="" src={avatar} />
         {/if}
+
     </div>
+
 </body>
 
 <style>
@@ -224,6 +243,7 @@
         width: 196px;
         height: 842px;
     }
+
     .mariana-anderson {
         align-self: stretch;
         position: relative;
@@ -304,7 +324,7 @@
     }
 
     .b {
-        width: 72px;
+        width: auto;
     }
     .b,
     .company-name,
@@ -315,7 +335,7 @@
     }
     .company-name {
         color: var(--color-gray-100);
-        width: 196px;
+        width: auto;
     }
     .job-position-here {
         font-size: var(--font-size-xs);
@@ -426,7 +446,7 @@
         position: absolute;
         top: 167px;
         left: 22px;
-        width: 177px;
+        width: auto;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -474,7 +494,7 @@
         position: absolute;
         top: 392px;
         left: 22px;
-        width: 239px;
+        width: auto;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -574,4 +594,22 @@
         color: var(--color-white);
         font-family: var(--font-nunito);
     }
+    .loading-container{
+        display: flex;
+        font-family: Lato;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 595px;
+        height: 842px;
+        font-size: var(--font-size-lg);
+        color: var(--color-white);
+        font-family: var(--font-nunito);
+        z-index: 10;
+    }
+
+
+    
 </style>

@@ -2,12 +2,20 @@
     import { Education } from "../../input_model";
     import "../../styles/form.css";
 
-    export let education = new Education();
+    export let educations = [new Education()];
+
+    function add_education() {
+        educations = [...educations, new Education()];
+    }
+
+    $: add_education;
 </script>
 
 <body>
     <div class="card-container">
         <h2>Education</h2>
+        {#each educations as education, i}
+        <h3>Education {i + 1}</h3>
 
         <div class="education-grid">
             <div>
@@ -57,6 +65,11 @@
                 />
             </div>
         </div>
+
+        {/each}
+        <button class="add_edu" on:click={add_education}>
+            Add Education
+        </button>
     </div></body
 >
 
@@ -88,5 +101,30 @@
         padding: 0;
         margin-top: 0;
         font-weight: 400;
+    }
+    h3 {
+        padding: 0;
+        margin-top: 0;
+        font-weight: 400;
+    }
+
+
+    .add_edu {
+        width: 100%;
+        padding: 15px;
+        background-color: antiquewhite;
+        background: none;
+        color: inherit;
+        border: 1px;
+        border-style: dashed;
+        border-color: black;
+
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    }
+
+    .add_edu:hover {
+        background-color: rgb(243, 243, 243);
     }
 </style>

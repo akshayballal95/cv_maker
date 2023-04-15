@@ -90,7 +90,7 @@ export class Resume {
   constructor() {
     this.avatar = "";
     this.personal_information = new PersonalInformation();
-    this.education = new Education();
+    this.education = [new Education()];
     this.address = new Address();
     this.work_experience = [new WorkExperience()];
     this.projects = [new Project()];
@@ -99,6 +99,6 @@ export class Resume {
   personal_information: PersonalInformation;
   projects: Project[];
   address: Address;
-  education: Education;
+  education: Education[];
   work_experience: WorkExperience[];
 }
