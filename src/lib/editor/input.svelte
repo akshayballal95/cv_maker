@@ -7,6 +7,7 @@
     import item from "../../resume.json";
     import { send_to_gpt } from "../../openai";
     import type { Project, Resume } from "../../input_model";
+    import ProfileImage from "./profileImage.svelte";
 
     export let resume_object :Resume;
 
@@ -14,6 +15,7 @@
 
 <body>
     <div class="container">
+        <ProfileImage bind:avatar = {resume_object.avatar}/>
         <About bind:personal_information={resume_object.personal_information} />
         <Address bind:address={resume_object.address} />
         <Education bind:education={resume_object.education} />
@@ -25,12 +27,7 @@
 </body>
 
 <style>
-    /* Font */
-    body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-            Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-            sans-serif;
-    }
+
 
     /* Container */
     .container {

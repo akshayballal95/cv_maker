@@ -1,9 +1,13 @@
 <script lang="ts">
+    import {loading} from "../../stores/ResumeStore"
     import type { Resume } from "../../input_model";
     export let resume_object: Resume;
     import avatar from "$lib/assets/photo.png";
-    import line from "$lib/assets/group-3.svg";
+    import oip from "$lib/assets/default.jpg";
     $: resume = resume_object;
+
+    
+
 </script>
 
 <svelte:head>
@@ -55,9 +59,16 @@
                             {work.company_name}
                         </div>
                         <b class="job-position-here">{work.job_title}</b>
-                        <div class="lorem-ipsum-dolor1">
-                            {work.description}
-                        </div>
+                        <ul
+                            class="lorem-ipsum-dolor1"
+                            style="padding-left: 10px; padding-top:0; margin-top:5px"
+                        >
+                            {#each work.description.split("\n") as des, i}
+                                <li>
+                                    {des}
+                                </li>
+                            {/each}
+                        </ul>
                     </div>
                 {/each}
             </div>
@@ -150,7 +161,7 @@
         <div class="frame-group">
             {#each resume.projects as project, i}
                 <div class="rolling-stone-ball-parent">
-                    <b class="experience">{project.title}</b>
+                    <b class="job-position-here">{project.title}</b>
                     <div class="div5">
                         {project.start_date} - {project.end_date}
                     </div>
@@ -159,22 +170,16 @@
                     </div>
                 </div>
             {/each}
-            <!-- <div class="rolling-stone-ball-parent">
-                <b class="experience">Melting Volcano</b>
-                <div class="div5">01/22 - 02/23</div>
-                <div class="lorem-ipsum-dolor1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam pharetra in lorem at laoreet. Donec hendrerit libero
-                    eget est tempor, quis tempus arcu elementum. In elementum
-                    elit at dui tristique feugiat. Mauris convallis, mi at
-                    mattis malesuada, neque nulla volutpat dolor, hendrerit
-                    faucibus eros nibh ut nunc. Proin luctus urna id nunc
-                    sagittis dignissim. Sed in libero sed libero dictum dapibus.
-                    Vivamus fermentum
-                </div>
-            </div> -->
         </div>
-        <img class="photo-2022-11-07-12-51-02-1-icon" alt="" src={avatar} />
+        {#if resume.avatar}
+            <img
+                class="photo-2022-11-07-12-51-02-1-icon"
+                alt=""
+                src={resume.avatar}
+            />
+        {:else}
+            <img class="photo-2022-11-07-12-51-02-1-icon" alt="" src={avatar} />
+        {/if}
     </div>
 </body>
 
@@ -306,6 +311,7 @@
     .b,
     .company-name,
     .job-position-here {
+        color: var(--color-darkslategray);
         position: relative;
         display: inline-block;
     }
@@ -530,6 +536,7 @@
     }
     .frame-group,
     .rolling-stone-ball-parent {
+        color:var(--color-darkslategray);
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;

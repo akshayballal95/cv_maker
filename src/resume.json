@@ -37,7 +37,7 @@
             "country": "India",
             "start_date": "03/07/2017",
             "end_date": "03/07/2023",
-            "description": "CAD Designs \n BOM \n Drawings"
+            "description": "CAD Designs \nBOM \nDrawings"
         },
         {
             "company_name": "Carnot Technologies",
@@ -46,7 +46,7 @@
             "country": "India",
             "start_date": "03/07/2017",
             "end_date": "03/07/2023",
-            "description": "Market Research \n Thermal Analysis"
+            "description": "Market Research \nThermal Analysis"
         }
     ],
 

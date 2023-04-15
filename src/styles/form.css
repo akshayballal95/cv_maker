@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap');
 .card-container {
     padding: 30px;
     border-radius: 10px;
@@ -8,13 +9,14 @@
 body {
     padding:0;
     margin:0;
+    font-family: 'Roboto', sans-serif;
     
 }
 
 label {
     display: block;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 5px;
     letter-spacing: 1px;
 }
@@ -31,7 +33,9 @@ textarea {
     background-color: white;
     font-size: 13px;
     transition: all 0.3s ease-in-out;
+    font-family:'Roboto', sans-serif;
 }
+
 
 textarea {
     height: 150px;

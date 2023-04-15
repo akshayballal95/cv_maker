@@ -88,13 +88,14 @@ export class PersonalInformation {
 
 export class Resume {
   constructor() {
+    this.avatar = "";
     this.personal_information = new PersonalInformation();
     this.education = new Education();
     this.address = new Address();
     this.work_experience = [new WorkExperience()];
     this.projects = [new Project()];
   }
-
+  avatar:string;
   personal_information: PersonalInformation;
   projects: Project[];
   address: Address;

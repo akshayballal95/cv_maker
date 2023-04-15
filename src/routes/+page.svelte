@@ -4,18 +4,22 @@
     import type { Resume } from "../input_model";
     import { send_to_gpt } from "../openai";
     import item from "../resume.json";
+    import {loading} from '../stores/ResumeStore';
+
 
     export let resume_object = item as Resume;
-    // export let resume = resume_object
     let openAI_output = [];
 
+
     async function showlog() {
+        $loading = true
         openAI_output = await send_to_gpt(JSON.stringify(resume_object));
-        resume_object.personal_information.introduction = openAI_output.introduction;
+        resume_object.personal_information.introduction =
+            openAI_output.introduction;
         console.log(openAI_output);
         for (let i = 0; i < openAI_output.improved_job_roles.length; i++) {
             resume_object.work_experience[i].description =
-                openAI_output.improved_job_roles[i].job_description;
+                openAI_output.improved_job_roles[i].job_description.join("\n");
         }
 
         for (let i = 0; i < openAI_output.projects.length; i++) {
@@ -24,6 +28,7 @@
         }
         console.log(resume_object);
         console.log(await send_to_gpt(JSON.stringify(resume_object)));
+        $loading = false;
     }
     $: showlog;
 </script>
