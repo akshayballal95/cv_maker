@@ -1,13 +1,10 @@
 <script lang="ts">
-    import {loading} from "../../stores/ResumeStore"
+    import { loading } from "../../stores/ResumeStore";
     import type { Resume } from "../../input_model";
     export let resume_object: Resume;
     import avatar from "$lib/assets/photo.png";
     import oip from "$lib/assets/default.jpg";
     $: resume = resume_object;
-
-    
-
 </script>
 
 <svelte:head>
@@ -28,6 +25,7 @@
             <div class="introduction">
                 <div class="mariana-anderson-parent">
                     <div class="mariana-anderson">
+                       
                         <b>{resume.personal_information.first_name}</b><span>
                             {resume.personal_information.last_name}</span
                         >
@@ -536,7 +534,7 @@
     }
     .frame-group,
     .rolling-stone-ball-parent {
-        color:var(--color-darkslategray);
+        color: var(--color-darkslategray);
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;

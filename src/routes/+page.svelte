@@ -14,6 +14,8 @@
     async function showlog() {
         $loading = true
         openAI_output = await send_to_gpt(JSON.stringify(resume_object));
+        $loading = false;
+
         resume_object.personal_information.introduction =
             openAI_output.introduction;
         console.log(openAI_output);
@@ -28,7 +30,6 @@
         }
         console.log(resume_object);
         console.log(await send_to_gpt(JSON.stringify(resume_object)));
-        $loading = false;
     }
     $: showlog;
 </script>
