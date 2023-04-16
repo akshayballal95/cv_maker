@@ -509,11 +509,6 @@
         align-items: center;
         gap: 13px;
     }
-    .div4 {
-        align-self: stretch;
-        position: relative;
-        font-size: var(--font-size-3xs);
-    }
     .rolling-stone-ball-parent {
         flex: 1;
         flex-direction: column;
