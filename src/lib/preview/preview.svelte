@@ -1,11 +1,10 @@
 <script lang="ts">
     import { loading } from "$lib/stores/ResumeStore";
     import type { Resume } from "../../input_model";
-    export let resume_object: Resume;
     import avatar from "$lib/assets/photo.png";
     import oip from "$lib/assets/default.jpg";
     import "../../styles/loader.css";
-    $: resume = resume_object;
+    import {resume} from "$lib/stores/ResumeStore"
 </script>
 
 <svelte:head>
@@ -42,25 +41,25 @@
                     <div class="component-1">
                         <b class="phone">Phone</b>
                         <div class="div">
-                            {resume.personal_information.phone_number}
+                            {$resume.personal_information.phone_number}
                         </div>
                     </div>
                     <div class="component-2">
                         <b class="phone"><p class="email">Email</p></b>
                         <div class="div">
-                            {resume.personal_information.email}
+                            {$resume.personal_information.email}
                         </div>
                     </div>
                     <div class="component-3">
                         <b class="address">Address</b>
                         <div class="mariana-anderson">
-                            {resume.address.address_line_1}
+                            {$resume.address.address_line_1}
                         </div>
                         <div class="mariana-anderson">
-                            {resume.address.address_line_2}
+                            {$resume.address.address_line_2}
                         </div>
                         <div class="mariana-anderson">
-                            {resume.address.city}: {resume.address.pincode}
+                            {$resume.address.city}: {$resume.address.pincode}
                         </div>
                     </div>
                 </div>
@@ -69,7 +68,7 @@
                     <div class="education-header-child" />
                 </div>
                 <div class="education-information">
-                    {#each resume.education as education}
+                    {#each $resume.education as education}
                         <div class="mariana-anderson-parent">
                             <div class="mariana-anderson">2008</div>
                             <b class="bachelor-of-engineering"
@@ -123,18 +122,18 @@
                     <div class="introduction">
                         <div class="mariana-anderson-parent">
                             <div class="mariana-anderson">
-                                <b>{resume.personal_information.first_name}</b
+                                <b>{$resume.personal_information.first_name}</b
                                 ><span>
-                                    {resume.personal_information
+                                    {$resume.personal_information
                                         .last_name}</span
                                 >
                             </div>
                             <div class="marketing-manager">
-                                {resume.personal_information.position}
+                                {$resume.personal_information.position}
                             </div>
                         </div>
                         <div class="lorem-ipsum-dolor">
-                            {resume.personal_information.introduction}
+                            {$resume.personal_information.introduction}
                         </div>
                     </div>
                 </div>
@@ -144,7 +143,7 @@
                 </header>
                 <div class="group-parent">
                     <div class="instance-parent">
-                        {#each resume.work_experience as work, i}
+                        {#each $resume.work_experience as work, i}
                             <div class="parent">
                                 <b class="b"
                                     >{work.start_date} - {work.end_date}</b
@@ -173,7 +172,7 @@
                     <div class="frame-child" />
                 </header>
                 <div class="frame-group">
-                    {#each resume.projects as project, i}
+                    {#each $resume.projects as project, i}
                         <div class="rolling-stone-ball-parent">
                             <b class="job-position-here">{project.title}</b>
                             <div class="div5">
@@ -186,11 +185,11 @@
                     {/each}
                 </div>
             </div>
-            {#if resume.avatar}
+            {#if $resume.avatar}
                 <img
                     class="photo-2022-11-07-12-51-02-1-icon"
                     alt=""
-                    src={resume.avatar}
+                    src={$resume.avatar}
                 />
             {:else}
                 <img

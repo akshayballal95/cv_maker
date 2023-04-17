@@ -12,8 +12,9 @@
     import { Timestamp, addDoc, collection, doc, setDoc } from "firebase/firestore";
     import { db } from "$lib/client/firebase";
     import Sidenav from "$lib/sidenav/sidenav.svelte";
+    import {resume} from "$lib/stores/ResumeStore"
 
-    export let resume_object = item as Resume;
+    $resume = item as Resume;
     let openAI_output = [];
 
  
@@ -21,23 +22,23 @@
 
     async function showlog() {
         $loading = true;
-        openAI_output = await send_to_gpt(JSON.stringify(resume_object));
+        openAI_output = await send_to_gpt(JSON.stringify($resume));
         $loading = false;
 
-        resume_object.personal_information.introduction =
+        $resume.personal_information.introduction =
             openAI_output.introduction;
         console.log(openAI_output);
         for (let i = 0; i < openAI_output.improved_job_roles.length; i++) {
-            resume_object.work_experience[i].description =
+            $resume.work_experience[i].description =
                 openAI_output.improved_job_roles[i].job_description.join("\n");
         }
 
         for (let i = 0; i < openAI_output.projects.length; i++) {
-            resume_object.projects[i].description =
+            $resume.projects[i].description =
                 openAI_output.projects[i].description;
         }
-        console.log(resume_object);
-        console.log(await send_to_gpt(JSON.stringify(resume_object)));
+        console.log($resume);
+        console.log(await send_to_gpt(JSON.stringify($resume)));
     }
     $: showlog;
 </script>
@@ -46,12 +47,12 @@
     <div class="container">
        <Sidenav/>
      
-        <div class="editor"><Input bind:resume_object /></div>
+        <div class="editor"><Input /></div>
         <button on:click={showlog}>SUBMIT</button>
 
         
         <div class="output">
-            <div class="preview"><Preview bind:resume_object /></div>
+            <div class="preview"><Preview /></div>
         </div>
     </div>
 {/if}

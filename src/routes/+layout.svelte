@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
     import { goto } from "$app/navigation";
     import { addDoc, collection, doc, getDocs, query, setDoc } from "firebase/firestore";
-    import { Resume } from "../input_model";
+    import { PersonalInformation, Resume } from "../input_model";
     import {classToObject } from "$lib/client/firestore";
 
     onMount( () => {
@@ -19,7 +19,7 @@
 
             if(querySnapshot.empty){
                 addDoc(collection(db, "users/"+$user?.uid+"/resumes/"),
-               classToObject(new Resume) )
+               {...classToObject(new Resume), personal_information:{first_name:$user?.displayName }})
             }
 
             if($user == null){

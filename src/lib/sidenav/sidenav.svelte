@@ -1,41 +1,40 @@
 <script lang="ts">
-    import { auth, db } from "$lib/client/firebase";
-    import { getResumes } from "$lib/client/firestore";
+
     import { authHandlers, user } from "$lib/stores/AuthStore";
     import { onMount } from "svelte";
-    import { Resume } from "../../input_model";
-    import { send_to_gpt } from "../../openai";
-    // import { resumeListener } from "../client/firestore";
+    import {resume, } from "../stores/ResumeStore"
+    import {getResumes, resumes, addResumeFirestore} from "../stores/ResumeStore"
 
-    import { collection, query, where, onSnapshot } from "firebase/firestore";
     
    
     async function logout() {
         await authHandlers.logout();
     }
-    let resume = new Resume();
 
-    let resumes;
     
-    // onMount(async ()=>{
-    //     let resumeList = await getResumes($user?.uid!);
-    //     resumes = resumeList
-
-    // })
-    // console.log(resumes)
-
-    getResumes($user?.uid!).then((data)=>{
-        resumes = data
-        // console.log(resumes)
+    onMount(async ()=>{
+       await getResumes($user?.uid!);
+        console.log($resumes)
     })
 
-    console.log(resumes)
-    
+    async function addResume () {
+        await addResumeFirestore($user?.uid!, $resume)
+
+    }
+
+       
 
 </script>
 
 <div class="side-nav">
     <button on:click={logout}>Logout</button>
+
+    {#each $resumes as res,i}
+    <h2 style="color:black">
+        Resume {i+1}
+    </h2>
+    {/each}
+    <button on:click={addResume}>Add Resume</button>
 </div>
 
 <style>

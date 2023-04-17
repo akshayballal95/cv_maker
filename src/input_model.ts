@@ -86,8 +86,18 @@ export class PersonalInformation {
   introduction:string;
 }
 
+export class TargetCompany{
+  constructor(){
+    this.company_name = "";
+    this.job_description = "";
+  }
+  company_name: string;
+  job_description: string
+}
+
 export class Resume {
   constructor() {
+    this.company = new TargetCompany();
     this.avatar = "";
     this.personal_information = new PersonalInformation();
     this.education = [new Education()];
@@ -96,6 +106,7 @@ export class Resume {
     this.projects = [new Project()];
   }
   avatar:string;
+  company: TargetCompany;
   personal_information: PersonalInformation;
   projects: Project[];
   address: Address;

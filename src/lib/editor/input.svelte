@@ -8,21 +8,21 @@
     import { send_to_gpt } from "../../openai";
     import type { Project, Resume } from "../../input_model";
     import ProfileImage from "./profileImage.svelte";
+    import {resume } from "$lib/stores/ResumeStore"
 
-    export let resume_object :Resume;
-
-
+    
 
 </script>
 
 <body>
     <div class="container">
-        <ProfileImage bind:avatar = {resume_object.avatar}/>
-        <About bind:personal_information={resume_object.personal_information} />
-        <Address bind:address={resume_object.address} />
-        <Education bind:educations={resume_object.education} />
-        <Experience bind:work_exps={resume_object.work_experience} />
-        <Projects bind:projects = {resume_object.projects } />
+        <input type="text" bind:value={$resume.company.company_name}/>
+        <ProfileImage bind:avatar = {$resume.avatar}/>
+        <About bind:personal_information={$resume.personal_information} />
+        <Address bind:address={$resume.address} />
+        <Education bind:educations={$resume.education} />
+        <Experience bind:work_exps={$resume.work_experience} />
+        <Projects bind:projects = {$resume.projects } />
     </div>
 
     
