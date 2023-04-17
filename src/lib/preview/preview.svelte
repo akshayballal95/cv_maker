@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { loading } from "../../stores/ResumeStore";
+    import { loading } from "$lib/stores/ResumeStore";
     import type { Resume } from "../../input_model";
     export let resume_object: Resume;
     import avatar from "$lib/assets/photo.png";
@@ -567,7 +567,7 @@
         flex-direction: column;
         position: absolute;
         background-color: rgba(0, 0, 0, 0.8);
-        width: 595px;
+        width: 100%;
         height: 842px;
         font-size: var(--font-size-lg);
         color: var(--color-white);

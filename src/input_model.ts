@@ -102,3 +102,7 @@ export class Resume {
   education: Education[];
   work_experience: WorkExperience[];
 }
+
+// const resumeConverter ={
+//   toFirestore: ()
+// }

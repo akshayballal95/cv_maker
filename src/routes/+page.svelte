@@ -1,78 +1,165 @@
-<script lang="ts">
-    import Input from "$lib/editor/input.svelte";
-    import Preview from "$lib/preview/preview.svelte";
-    import type { Resume } from "../input_model";
-    import { send_to_gpt } from "../openai";
-    import item from "../resume.json";
-    import {loading} from '../stores/ResumeStore';
+<script>
+    import { goto } from "$app/navigation";
+    import { authHandlers, user } from "$lib/stores/AuthStore";
+    import logo from "$lib/assets/your-logo.png";
 
-
-    export let resume_object = item as Resume;
-    let openAI_output = [];
-
-
-    async function showlog() {
-        $loading = true
-        openAI_output = await send_to_gpt(JSON.stringify(resume_object));
-        $loading = false;
-
-        resume_object.personal_information.introduction =
-            openAI_output.introduction;
-        console.log(openAI_output);
-        for (let i = 0; i < openAI_output.improved_job_roles.length; i++) {
-            resume_object.work_experience[i].description =
-                openAI_output.improved_job_roles[i].job_description.join("\n");
-        }
-
-        for (let i = 0; i < openAI_output.projects.length; i++) {
-            resume_object.projects[i].description =
-                openAI_output.projects[i].description;
-        }
-        console.log(resume_object);
-        console.log(await send_to_gpt(JSON.stringify(resume_object)));
+    async function login() {
+        await authHandlers.login();
+        goto("/creator");
     }
-    $: showlog;
 </script>
 
+<svelte:head>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+</svelte:head>
 <div class="container">
-    <div class="side-nav"><button on:click={showlog}> SUBMIT </button></div>
-    <div class="editor"><Input bind:resume_object /></div>
-    <div class="output">
-        <div class="preview"><Preview bind:resume_object /></div>
+    <div class="branding">
+        <h1 class="brand-heading">ResumeGenius</h1>
+        <p class="brand-text">
+            Create the perfect resume in seconds with our AI-powered resume
+            generator
+        </p>
+        <div class="features-grid">
+            <div class="feature">
+                <i class="fas fa-check-circle" />
+                <p>Customizable resume templates for any job type</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-check-circle" />
+                <p>Keyword optimization for better visibility</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-check-circle" />
+                <p>Real-time feedback and suggestions</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-check-circle" />
+                <p>Automated cover letter creation</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-check-circle" />
+                <p>Privacy and security guaranteed</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-check-circle" />
+                <p>100% satisfaction guarantee</p>
+            </div>
+        </div>
+    </div>
+    <div class="login">
+        <img src={logo} alt="Logo" class="logo" />
+        <h2 class="heading">Create your Resume Now</h2>
+        <button on:click={login} class="btn"
+            ><i class="fa-brands fa-google" style="color: #ffffff; font-size: 20px" />Sign in
+            with Google</button
+        >
     </div>
 </div>
 
 <style>
-    .container {
-        margin: 0px;
-        height: 100%;
-        display: flex;
-    }
+    /* Global styles */
 
-    .side-nav {
-        background-color: orange;
-        width: 15em;
-    }
-    .editor {
-        height: 100vh;
+    * {
         box-sizing: border-box;
-        overflow: scroll;
-        flex: 1 1 auto;
     }
 
-    .output {
+    .container {
         display: flex;
-        flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        flex: 3 1 auto;
+        height: 100vh;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .preview {
-        width: 595px;
-        height: 842px;
-        border: 1px;
-        border-color: black;
-        border-style: solid;
+    .branding {
+        width: 70%;
+        padding: 4rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .brand-heading {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .brand-text {
+        font-size: 1.5rem;
+        color: #777;
+        margin-bottom: 2rem;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .feature {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: #777;
+    }
+
+    .feature i {
+        font-size: 1.5rem;
+        color: #4285f4;
+        margin-right: 0.5rem;
+    }
+
+    .login {
+        width: 30%;
+        padding:5rem 2rem;
+        background-color: #4285f4;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 2rem;
+    }
+
+    .heading {
+        font-size: 1.5rem;
+        color: #fff;
+        margin-bottom: 2rem;
+    }
+
+    .btn {
+        padding: 1rem 1rem;
+        border: none;
+        border-radius: 25px;
+        background-color: red;
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        
+    }
+
+    .btn:hover {
+        background-color: rgba(0, 0, 0, 0.2);
     }
 </style>

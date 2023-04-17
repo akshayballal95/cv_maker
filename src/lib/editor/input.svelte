@@ -11,6 +11,8 @@
 
     export let resume_object :Resume;
 
+
+
 </script>
 
 <body>
