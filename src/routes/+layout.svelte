@@ -3,31 +3,37 @@
     import { auth, db } from "$lib/client/firebase";
     import { onMount } from "svelte";
     import { goto } from "$app/navigation";
-    import { addDoc, collection, doc, getDocs, query, setDoc } from "firebase/firestore";
+    import {
+        addDoc,
+        collection,
+        doc,
+        getDocs,
+        query,
+        setDoc,
+    } from "firebase/firestore";
     import { PersonalInformation, Resume } from "../input_model";
-    import {classToObject } from "$lib/client/firestore";
+    import { classToObject } from "$lib/client/firestore";
 
-    onMount( () => {
+    onMount(() => {
         auth.onAuthStateChanged(async (currentUser) => {
-      
-            $user = currentUser
-            $isLoading = false
+            $user = currentUser;
+            $isLoading = false;
 
-            const q = query((collection(db, "users/"+$user?.uid+"/resumes")))
+            const q = query(collection(db, "users/" + $user?.uid + "/resumes"));
 
             const querySnapshot = await getDocs(q);
 
-            if(querySnapshot.empty){
-                addDoc(collection(db, "users/"+$user?.uid+"/resumes/"),
-               {...classToObject(new Resume), personal_information:{first_name:$user?.displayName }})
+            if (querySnapshot.empty && $user) {
+                addDoc(collection(db, "users/" + $user?.uid + "/resumes/"), {
+                    ...classToObject(new Resume()),
+                    personal_information: { first_name: $user?.displayName },
+                    target_company: {company_name: "New Resume"}
+                });
             }
 
-            if($user == null){
-            goto("/")
-            
-        }
-     
-
+            if ($user == null) {
+                goto("/");
+            }
         });
     });
 </script>

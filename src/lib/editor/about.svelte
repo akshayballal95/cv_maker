@@ -28,41 +28,39 @@
             </div>
 
             <div>
-                <div>
-                    <label for="email">Email</label>
-                    <input
-                        type="text"
-                        id="email"
-                        name="email"
-                        bind:value={personal_information.email}
-                    />
-                </div>
-                <div>
-                    <label for="phone">Phone Number:</label>
-                    <input
-                        type="text"
-                        id="phone-number"
-                        name="phone-number"
-                        bind:value={personal_information.phone_number}
-                    />
-                </div>
-                <div>
-                    <label for="postion">Position</label>
-                    <input
-                        type="text"
-                        id="position"
-                        name="position"
-                        bind:value={personal_information.position}
-                    />
-                </div>
-                <div>
-                    <label for="introduction">Introduction</label>
-                    <textarea
-                        id="introduction"
-                        name="introduction"
-                        bind:value={personal_information.introduction}
-                    />
-                </div>
+                <label for="email">Email</label>
+                <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    bind:value={personal_information.email}
+                />
+            </div>
+            <div>
+                <label for="phone">Phone Number:</label>
+                <input
+                    type="text"
+                    id="phone-number"
+                    name="phone-number"
+                    bind:value={personal_information.phone_number}
+                />
+            </div>
+            <div>
+                <label for="postion">Position</label>
+                <input
+                    type="text"
+                    id="position"
+                    name="position"
+                    bind:value={personal_information.position}
+                />
+            </div>
+            <div>
+                <label for="introduction">Introduction</label>
+                <textarea
+                    id="introduction"
+                    name="introduction"
+                    bind:value={personal_information.introduction}
+                />
             </div>
         </div>
     </div></body
@@ -70,10 +68,10 @@
 
 <style>
     .about-grid {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
+        grid-template-rows: repeat(3, 1fr);
+        gap: 0 30px;
     }
     .about-container {
         padding: 30px;

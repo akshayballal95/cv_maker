@@ -145,10 +145,10 @@
     }
 
     .btn {
-        padding: 1rem 1rem;
+        padding: 0.7rem 1rem;
         border: none;
         border-radius: 25px;
-        background-color: red;
+        background-color: rgb(231, 56, 56);
         color: white;
         font-size: 1rem;
         font-weight: bold;

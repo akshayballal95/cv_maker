@@ -4,53 +4,52 @@
     import type { Resume } from "../../input_model";
     import { send_to_gpt } from "../../openai";
     import item from "../../resume.json";
-    import { loading } from "$lib/stores/ResumeStore";
-    import { authHandlers } from "$lib/stores/AuthStore";
+    import { loading, selectedResume } from "$lib/stores/ResumeStore";
     import { user, isLoading } from "$lib/stores/AuthStore";
-    import { goto } from "$app/navigation";
-    import { onMount } from "svelte";
-    import { Timestamp, addDoc, collection, doc, setDoc } from "firebase/firestore";
-    import { db } from "$lib/client/firebase";
     import Sidenav from "$lib/sidenav/sidenav.svelte";
-    import {resume} from "$lib/stores/ResumeStore"
 
-    $resume = item as Resume;
+
     let openAI_output = [];
-
- 
-   
 
     async function showlog() {
         $loading = true;
-        openAI_output = await send_to_gpt(JSON.stringify($resume));
+        openAI_output = await send_to_gpt(JSON.stringify($selectedResume));
         $loading = false;
 
-        $resume.personal_information.introduction =
-            openAI_output.introduction;
+        $selectedResume.personal_information.introduction = openAI_output.introduction;
         console.log(openAI_output);
         for (let i = 0; i < openAI_output.improved_job_roles.length; i++) {
-            $resume.work_experience[i].description =
+            $selectedResume.work_experience[i].description =
                 openAI_output.improved_job_roles[i].job_description.join("\n");
         }
 
         for (let i = 0; i < openAI_output.projects.length; i++) {
-            $resume.projects[i].description =
+            $selectedResume.projects[i].description =
                 openAI_output.projects[i].description;
         }
-        console.log($resume);
-        console.log(await send_to_gpt(JSON.stringify($resume)));
+        console.log($selectedResume);
+        console.log(await send_to_gpt(JSON.stringify($selectedResume)));
     }
     $: showlog;
 </script>
 
+<svelte:head>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+</svelte:head>
+
 {#if $isLoading == false && $user}
     <div class="container">
-       <Sidenav/>
-     
+        <Sidenav />
+
         <div class="editor"><Input /></div>
         <button on:click={showlog}>SUBMIT</button>
 
-        
         <div class="output">
             <div class="preview"><Preview /></div>
         </div>
@@ -63,7 +62,6 @@
         height: 100%;
         display: flex;
     }
-
 
     .editor {
         height: 100vh;

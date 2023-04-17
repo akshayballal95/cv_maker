@@ -1,10 +1,12 @@
-{   "id":1,
+{
+    "id": "1",
+    "avatar": "",
     "personal_information": {
         "first_name": "Akshay",
         "last_name": "Ballal",
         "phone_number": "7762844196",
-        "introduction":"",
-        "position":"Chief Product Officer",
+        "introduction": "",
+        "position": "Chief Product Officer",
         "email": "arballal95@gmail.com"
     },
     "address": {
@@ -13,13 +15,15 @@
         "city": "Chennai",
         "pincode": "603103"
     },
-    "education": [{
-        "institute_name": "Birla Institute of Technology",
-        "field": "Mechanical Engineering",
-        "degree": "Bachelor of Engineering",
-        "city": "Ranchi",
-        "country": "India"
-    }],
+    "education": [
+        {
+            "institute_name": "Birla Institute of Technology",
+            "field": "Mechanical Engineering",
+            "degree": "Bachelor of Engineering",
+            "city": "Ranchi",
+            "country": "India"
+        }
+    ],
     "work_experience": [
         {
             "company_name": "Fabheads Automation",
@@ -49,7 +53,10 @@
             "description": "Market Research \nThermal Analysis"
         }
     ],
-
+    "target_company": {
+        "company_name": "Open AI",
+        "job_description": "Put water"
+    },
     "projects": [
         {
             "title": "Rolling Stone Ball",
@@ -57,6 +64,5 @@
             "end_date": "03/07/2023",
             "description": ""
         }
-      
     ]
 }

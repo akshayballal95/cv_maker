@@ -8,21 +8,26 @@
     import { send_to_gpt } from "../../openai";
     import type { Project, Resume } from "../../input_model";
     import ProfileImage from "./profileImage.svelte";
-    import {resume } from "$lib/stores/ResumeStore"
+    import { selectedResume, updateResumeService } from "$lib/stores/ResumeStore"
+    import {user} from "$lib/stores/AuthStore"
+    import TargetCompany from "./target_company.svelte";
 
-    
+    async function updateResume(){
+        await updateResumeService($user?.uid!, $selectedResume)
+    }
 
 </script>
 
 <body>
     <div class="container">
-        <input type="text" bind:value={$resume.company.company_name}/>
-        <ProfileImage bind:avatar = {$resume.avatar}/>
-        <About bind:personal_information={$resume.personal_information} />
-        <Address bind:address={$resume.address} />
-        <Education bind:educations={$resume.education} />
-        <Experience bind:work_exps={$resume.work_experience} />
-        <Projects bind:projects = {$resume.projects } />
+        <button on:click={updateResume}> Save</button>
+        <TargetCompany bind:targetCompany = {$selectedResume.target_company}/>
+        <ProfileImage bind:avatar = {$selectedResume.avatar}/>
+        <About bind:personal_information={$selectedResume.personal_information} />
+        <Address bind:address={$selectedResume.address} />
+        <Education bind:educations={$selectedResume.education} />
+        <Experience bind:work_exps={$selectedResume.work_experience} />
+        <Projects bind:projects = {$selectedResume.projects } />
     </div>
 
     
