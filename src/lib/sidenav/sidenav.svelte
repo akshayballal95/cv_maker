@@ -9,7 +9,6 @@
     } from "../stores/ResumeStore";
     import ResumeItem from "./resume_item.svelte";
 
-
     async function logout() {
         await authHandlers.logout();
     }
@@ -25,30 +24,29 @@
 
 <body
     ><div class="sidebar">
-        <button class="add_res" on:click={addResume}><i class="fa-sharp fa-light fa-plus"></i>   Add Resume</button>
+        <button class="add_res" on:click={addResume}
+            ><i class="fa-sharp fa-light fa-plus" /> Add Resume</button
+        >
 
         <div class="resume-container">
-        {#each $resumes as res, i}
-            <ResumeItem resume={res} />
-        {/each}
-
-    </div>
-    <button class = "logout-btn" on:click={logout}>Logout</button>
-
+            {#each $resumes as res, i}
+                <ResumeItem resume={res} />
+            {/each}
+        </div>
+        <button class="logout-btn" on:click={logout}>Logout</button>
     </div>
 </body>
 
 <style>
 
-  
-    .resume-container{
+
+    .resume-container {
         width: 95%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-        gap:10px;
-   
+        gap: 10px;
     }
 
     .sidebar {
@@ -63,6 +61,8 @@
         top: 0;
         left: 0;
         overflow-x: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
     }
 
     .add_res {
@@ -80,10 +80,10 @@
         font: inherit;
         cursor: pointer;
         outline: inherit;
-        gap:10px
+        gap: 10px;
     }
 
-    i{
+    i {
         font-size: 20px;
     }
 
@@ -91,21 +91,15 @@
         background-color: rgb(231, 231, 231);
     }
 
-
-    .logout-btn{
+    .logout-btn {
         /* flex-grow: 1;
         height: 20px; */
         margin-top: auto;
     }
 
-
     @media only screen and (max-width: 600px) {
         .sidebar {
             width: 100%;
         }
-
     }
-
-
-
 </style>

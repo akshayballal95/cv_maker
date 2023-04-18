@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { get, writable } from "svelte/store";
 
 import { auth, db } from "../client/firebase";
 import { Resume } from "../../input_model";
@@ -31,4 +31,6 @@ export async function getResumes(userId:string){
         r.push({...doc.data() as Resume, id:doc.id}))
         resumes.set(r)
     })
+
+
 }

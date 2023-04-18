@@ -54,6 +54,17 @@ textarea:focus {
     background-color: #ebebeb;
 }
 
+h2 {
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+}
+
+h2:hover{
+    cursor: pointer;
+
+}
+
 
 .add_btn {
     width: 100%;

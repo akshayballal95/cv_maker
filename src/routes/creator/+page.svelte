@@ -1,3 +1,4 @@
+
 <script lang="ts">
     import Input from "$lib/editor/input.svelte";
     import Preview from "$lib/preview/preview.svelte";
@@ -46,7 +47,7 @@
         <Sidenav />
 
         <div class="editor"><Input /></div>
-        <button on:click={showlog}>SUBMIT</button>
+        
 
         <div class="output">
             <div class="preview"><Preview /></div>

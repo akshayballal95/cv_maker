@@ -1,44 +1,41 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
-    import "../../styles/form.css"
+    import "../../styles/form.css";
 
     export let avatar: string;
     let fileinput: any;
-    const onFileSelected = (e:any) => {
-        console.log(e.target)
+    const onFileSelected = (e: any) => {
         let image = e.target?.files[0];
         let reader = new FileReader();
         reader.readAsDataURL(image);
         reader.onload = (e) => {
             avatar = e.target?.result as string;
-            console.log(avatar)
         };
     };
 </script>
 
 <body>
-    <div id="app">
-        <h3>Upload Image</h3>
-    
-      
- 
-        <button
-            class="chan"
-            on:click={() => {
-                fileinput.click();
-            }}
-        >
-            Choose Image
-        </button>
-        <input
-            style="display:none"
-            type="file"
-            accept=".jpg, .jpeg, .png"
-            on:change={(e) => onFileSelected(e)}
-            bind:this={fileinput}
-        />
+    <div class="card-container">
+        <div id="app">
+            <h2>Profile Image</h2>
+
+            <button
+                class="upload-button"
+                on:click={() => {
+                    fileinput.click();
+                }}
+            >
+                <i class="fas fa-cloud-upload-alt" /> Upload
+            </button>
+            <input
+                style="display:none"
+                type="file"
+                accept=".jpg, .jpeg, .png"
+                on:change={(e) => onFileSelected(e)}
+                bind:this={fileinput}
+            />
+        </div>
     </div>
-    
 </body>
 
 <style>
@@ -47,14 +44,28 @@
         align-items: center;
         justify-content: flex-start;
         flex-direction: row;
-        gap: 30px
+        gap: 30px;
     }
 
+    .upload-button{
+        display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    }
 
-
-    /* h3{
-        flex: 2 1 auto;
-    } */
-    
+    .upload-button:hover {
+    background-color: #ccc;
+  }
   
+
+  .fa-cloud-upload-alt {
+    margin-right: 10px;
+  }
 </style>
