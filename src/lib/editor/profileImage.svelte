@@ -2,7 +2,7 @@
     import Icon from "@iconify/svelte";
     import "../../styles/form.css";
 
-    export let avatar: string;
+    let avatar: string;
     let fileinput: any;
     const onFileSelected = (e: any) => {
         let image = e.target?.files[0];
