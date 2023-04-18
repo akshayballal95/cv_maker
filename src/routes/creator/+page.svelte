@@ -79,9 +79,9 @@
     }
 
     .preview {
-        overflow: scroll;
-        aspect-ratio: 1.414;
-        height:100%;
+        width: 595px;
+        /* aspect-ratio: 1.414; */
+        height:842px;
         border: 1px;
         border-color: black;
         border-style: solid;

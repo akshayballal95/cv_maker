@@ -575,7 +575,7 @@
     .a4-1 {
         position: relative;
         background-color: var(--color-white);
-        width: 100%;
+        width: 595px;
         aspect-ratio: 1/1.414;
         /* height: 842px; */
         overflow: hidden;
