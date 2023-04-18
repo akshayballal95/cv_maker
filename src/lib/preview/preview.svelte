@@ -4,6 +4,7 @@
     import avatar from "$lib/assets/photo.png";
     import oip from "$lib/assets/default.jpg";
     import "../../styles/loader.css";
+    
 
     import html2canvas from "html2canvas";
     import jsPDF from "jspdf";
@@ -220,7 +221,7 @@
                 <img
                     class="photo-2022-11-07-12-51-02-1-icon"
                     alt=""
-                    src={avatar}
+                    src={oip}
                 />
             {/if}
         </div>
