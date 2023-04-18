@@ -15,14 +15,14 @@
         if(d!=null){
             
             html2canvas(d, {
-                width: 1090,
-                height: 1684,
-                scale:4,
+                width: 595,
+                height: 842,
+                scale:6,
             }).then((canvas) => {
             var imgData = canvas.toDataURL("image/png");
             var doc = new jsPDF("p", "mm");
-            doc.addImage(imgData, 'PNG', 0, 0, 400, 600);
-            doc.save("sample-file.pdf");
+            doc.addImage(imgData, 'PNG', 0, 0, 200, 300);
+            doc.save("resume.pdf");
         });
         }
        
