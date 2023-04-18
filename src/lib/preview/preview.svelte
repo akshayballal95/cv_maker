@@ -1,9 +1,31 @@
-<script lang="ts">
+<script>
     import { loading, selectedResume } from "$lib/stores/ResumeStore";
-    import type { Resume } from "../../input_model";
+    // import type { Resume } from "../../input_model";
     import avatar from "$lib/assets/photo.png";
     import oip from "$lib/assets/default.jpg";
     import "../../styles/loader.css";
+
+    import html2canvas from "html2canvas";
+    import jsPDF from "jspdf";
+
+    function generatePDF() {
+        let d = document.getElementById("resume")
+
+        if(d!=null){
+            
+            html2canvas(d, {
+                width: 1090,
+                height: 1684,
+                scale:4,
+            }).then((canvas) => {
+            var imgData = canvas.toDataURL("image/png");
+            var doc = new jsPDF("p", "mm");
+            doc.addImage(imgData, 'PNG', 0, 0, 400, 600);
+            doc.save("sample-file.pdf");
+        });
+        }
+       
+    }
 </script>
 
 <svelte:head>
@@ -18,7 +40,8 @@
 </svelte:head>
 
 <body>
-    <div class="a4-1">
+    <button on:click={generatePDF}/>
+    <div id="resume" class="a4-1">
         {#if $loading == true}
             <div class="loading-container">
                 <div>populating fields based on information provided</div>
@@ -58,7 +81,8 @@
                             {$selectedResume.address.address_line_2}
                         </div>
                         <div class="mariana-anderson">
-                            {$selectedResume.address.city}: {$selectedResume.address.pincode}
+                            {$selectedResume.address.city}: {$selectedResume
+                                .address.pincode}
                         </div>
                     </div>
                 </div>
@@ -121,7 +145,9 @@
                     <div class="introduction">
                         <div class="mariana-anderson-parent">
                             <div class="mariana-anderson">
-                                <b>{$selectedResume.personal_information.first_name}</b
+                                <b
+                                    >{$selectedResume.personal_information
+                                        .first_name}</b
                                 ><span>
                                     {$selectedResume.personal_information
                                         .last_name}</span
