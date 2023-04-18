@@ -34,6 +34,10 @@
             if ($user == null) {
                 goto("/");
             }
+
+            else {
+                goto("/creator")
+            }
         });
     });
 </script>

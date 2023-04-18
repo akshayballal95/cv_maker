@@ -18,6 +18,8 @@
         referrerpolicy="no-referrer"
     />
 </svelte:head>
+
+{#if !$user}
 <div class="container">
     <div class="branding">
         <h1 class="brand-heading">ResumeGenius</h1>
@@ -61,7 +63,7 @@
         >
     </div>
 </div>
-
+{/if}
 <style>
     /* Global styles */
 
