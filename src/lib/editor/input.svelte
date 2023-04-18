@@ -56,7 +56,7 @@
         </div>
 
         <TargetCompany bind:targetCompany={$selectedResume.target_company} />
-        <ProfileImage bind:avatar={$selectedResume.avatar} />
+        <ProfileImage  />
         <About
             bind:personal_information={$selectedResume.personal_information}
         />

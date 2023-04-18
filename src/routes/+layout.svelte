@@ -26,7 +26,7 @@
             if (querySnapshot.empty && $user) {
                 addDoc(collection(db, "users/" + $user?.uid + "/resumes/"), {
                     ...classToObject(new Resume()),
-                    personal_information: { first_name: $user?.displayName },
+                   
                     target_company: {company_name: "New Resume"}
                 });
             }
