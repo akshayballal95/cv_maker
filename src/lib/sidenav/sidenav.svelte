@@ -1,14 +1,14 @@
 <script lang="ts">
     import { authHandlers, user } from "$lib/stores/AuthStore";
     import { onMount } from "svelte";
-    import {  selectedResume } from "../stores/ResumeStore";
+    import { selectedResume } from "../stores/ResumeStore";
     import {
         getResumes,
         resumes,
         addResumeFirestore,
     } from "../stores/ResumeStore";
     import ResumeItem from "./resume_item.svelte";
-    import type { Resume } from "../../input_model";
+
 
     async function logout() {
         await authHandlers.logout();
@@ -21,65 +21,85 @@
     async function addResume() {
         await addResumeFirestore($user?.uid!, $selectedResume);
     }
-
-
 </script>
 
 <body
     ><div class="sidebar">
-        <button on:click={logout}>Logout</button>
+        <button class="add_res" on:click={addResume}><i class="fa-sharp fa-light fa-plus"></i>   Add Resume</button>
 
+        <div class="resume-container">
         {#each $resumes as res, i}
             <ResumeItem resume={res} />
         {/each}
-        <!-- 
-<!-- 
-		<a href="#" class="active">Home<i class="fas fa-home"></i> </a>
-		<a href="#"><i class="fas fa-info-circle"></i> About</a>
-		<a href="#"><i class="fas fa-envelope"></i> Contact</a>
-		<a href="#"><i class="fas fa-blog"></i> Blog</a>
-		<a href="#"><i class="fas fa-cog"></i> Services</a> --> -->
 
-        <button on:click={addResume}>Add Resume</button>
+    </div>
+    <button class = "logout-btn" on:click={logout}>Logout</button>
+
     </div>
 </body>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: "Open Sans", sans-serif;
-        background-color: #fff;
-        color: #333;
+
+  
+    .resume-container{
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap:10px;
+   
     }
 
     .sidebar {
         background-color: #f5f5f5;
         height: 100vh;
-
+        padding-top:20px;
         width: 250px;
-        /* position: fixed; */
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
         top: 0;
         left: 0;
         overflow-x: hidden;
     }
 
-    .main {
-        margin-left: 250px;
-        padding: 20px;
+    .add_res {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background: none;
+        color: inherit;
+        border: 1px;
+        border-radius: 5px;
+        border-style: solid;
+        border-color: rgb(199, 197, 197);
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        gap:10px
     }
+
+    i{
+        font-size: 20px;
+    }
+
+    .add_res:hover {
+        background-color: rgb(231, 231, 231);
+    }
+
+
 
     @media only screen and (max-width: 600px) {
         .sidebar {
             width: 100%;
         }
 
-        .main {
-            margin-left: 0;
-        }
     }
 
-    .fa {
-        margin-right: 10px;
-    }
+
+
 </style>

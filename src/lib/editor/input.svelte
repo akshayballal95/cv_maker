@@ -5,8 +5,6 @@
     import Experience from "./experience.svelte";
     import Projects from "$lib/editor/projects.svelte";
     import item from "../../resume.json";
-    import { send_to_gpt } from "../../openai";
-    import type { Project, Resume } from "../../input_model";
     import ProfileImage from "./profileImage.svelte";
     import { selectedResume, updateResumeService } from "$lib/stores/ResumeStore"
     import {user} from "$lib/stores/AuthStore"

@@ -1,9 +1,7 @@
 <script lang="ts">
     import Input from "$lib/editor/input.svelte";
     import Preview from "$lib/preview/preview.svelte";
-    import type { Resume } from "../../input_model";
     import { send_to_gpt } from "../../openai";
-    import item from "../../resume.json";
     import { loading, selectedResume } from "$lib/stores/ResumeStore";
     import { user, isLoading } from "$lib/stores/AuthStore";
     import Sidenav from "$lib/sidenav/sidenav.svelte";
