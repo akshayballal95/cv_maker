@@ -40,8 +40,11 @@
     />
 </svelte:head>
 
+
+
 <body>
-    <button on:click={generatePDF}/>
+    <button class="submit-button" on:click={generatePDF}>Download</button>
+
     <div id="resume" class="a4-1">
         {#if $loading == true}
             <div class="loading-container">
@@ -583,6 +586,9 @@
         font-size: 32px;
         color: var(--color-darkslategray);
         font-family: var(--font-lato);
+        border: 1px;
+        border-color: black;
+        border-style: solid;
     }
 
     .loading-container {
@@ -600,4 +606,22 @@
         font-family: var(--font-nunito);
         z-index: 10;
     }
+
+    .submit-button {
+        display: inline-block;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        background-color: rgb(135, 182, 66);
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .submit-button:hover {
+        background-color: #ccc;
+    }
+
 </style>
