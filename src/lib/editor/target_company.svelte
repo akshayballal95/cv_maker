@@ -1,37 +1,33 @@
 <script>
     import { TargetCompany } from "../../input_model";
     import "../../styles/form.css";
+    import FormTemplate from "./formTemplate.svelte";
     export let targetCompany = new TargetCompany();
 </script>
 
 <body>
-    <div class="company-container">
-        <h2>Target Company</h2>
-        <div class="company-grid">
-            <div>
-                <label for="company-line-1">Company Name</label>
-                <input
-                    type="text"
-                    id="company-line-1"
-                    name="company-line-1"
-                    bind:value={targetCompany.company_name}
-                />
-            </div>
-
-            <div>
-                <label for="company-line-2">Job Description</label>
-                <textarea
-                    id="company-line-2"
-                    name="company-line-2"
-                    bind:value={targetCompany.job_description}
-                />
-            </div>
-
-          
-
-            
-        </div>
+  <FormTemplate name = "Target Company"> <div class="company-grid">
+    <div>
+        <label for="company-line-1">Company Name</label>
+        <input
+            type="text"
+            id="company-line-1"
+            name="company-line-1"
+            bind:value={targetCompany.company_name}
+        />
     </div>
+
+    <div>
+        <label for="company-line-2">Job Description</label>
+        <textarea
+            id="company-line-2"
+            name="company-line-2"
+            bind:value={targetCompany.job_description}
+        />
+    </div>
+</div>
+</FormTemplate>
+           
 </body>
 
 <style>

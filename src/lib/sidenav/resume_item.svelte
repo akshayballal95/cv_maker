@@ -20,9 +20,9 @@
 <div on:click={selectResume} on:keydown={() => {}} class="container">
     <!-- svelte-ignore a11y-invalid-attribute -->
     <a href="#" class={$selectedResume.id == resume.id ? "active" : ""}>
-        <span class="item">{resume.target_company.company_name}</span>
+        <i class="fa-solid fa-file"></i><span class="item">{resume.target_company.company_name}</span>
         {#if $selectedResume.id == resume.id }
-            <i
+            <i 
                 on:click={deleteResume}
                 on:keydown={() => {}}
                 class="fa-solid fa-trash-can"
@@ -46,7 +46,9 @@
         transition: all 0.3s ease;
         font-weight:500;
         font-size: 14px;
-        justify-content: space-between;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 15px;
         border-radius: 5px;
     }
 
@@ -58,5 +60,9 @@
     a:hover:not(.active) {
         background-color: rgb(231, 231, 231);
         /* color: #fff; */
+    }
+
+    .fa-trash-can{
+        margin-left: auto;
     }
 </style>

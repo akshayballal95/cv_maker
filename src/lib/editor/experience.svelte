@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { slide } from "svelte/transition";
     import { WorkExperience } from "../../input_model";
     import "../../styles/form.css";
     let exp1: WorkExperience = new WorkExperience();
@@ -7,14 +8,21 @@
     function add_experience() {
         work_exps = [...work_exps, new WorkExperience()];
     }
-
+    $: collapsed = true;
+    function toggleCollapse() {
+        collapsed = !collapsed;
+    }
     $: add_experience;
 </script>
 
 <body>
     <div class="card-container">
-        <h2>Work</h2>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <h2 on:click={toggleCollapse} >Work</h2>
+        {#if !collapsed}
         {#each work_exps as work, i}
+        <div  class="form-container" transition:slide>
+
             <h3>Experience {i + 1}</h3>
             <div class="education-grid">
                 <div>
@@ -81,11 +89,15 @@
                     />
                 </div>
             </div>
-        {/each}
+        </div>
 
-        <button class="add_exp" on:click={add_experience}>
+        {/each}
+        
+        <button class="add_btn" on:click={add_experience}>
             Add Experience
         </button>
+        {/if}
+
     </div></body
 >
 
@@ -121,7 +133,7 @@
 
     h2 {
         padding: 0;
-        margin-top: 0;
+        margin: 0;
         font-weight: 400;
     }
 
@@ -131,22 +143,5 @@
         font-weight: 400;
     }
 
-    .add_exp {
-        width: 100%;
-        padding: 15px;
-        background-color: antiquewhite;
-        background: none;
-        color: inherit;
-        border: 1px;
-        border-style: dashed;
-        border-color: black;
-
-        font: inherit;
-        cursor: pointer;
-        outline: inherit;
-    }
-
-    .add_exp:hover {
-        background-color: rgb(243, 243, 243);
-    }
+    
 </style>

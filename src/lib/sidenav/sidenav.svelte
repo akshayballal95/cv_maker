@@ -53,8 +53,7 @@
 
     .sidebar {
         background-color: #f5f5f5;
-        height: 100vh;
-        padding-top:20px;
+        height: 100%;
         width: 250px;
         display: flex;
         gap: 10px;
@@ -67,6 +66,7 @@
     }
 
     .add_res {
+        margin-top: 20px;
         width: 90%;
         display: flex;
         align-items: center;
@@ -91,6 +91,12 @@
         background-color: rgb(231, 231, 231);
     }
 
+
+    .logout-btn{
+        /* flex-grow: 1;
+        height: 20px; */
+        margin-top: auto;
+    }
 
 
     @media only screen and (max-width: 600px) {

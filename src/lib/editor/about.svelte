@@ -1,69 +1,72 @@
 <script>
     import { PersonalInformation } from "../../input_model";
     import "../../styles/form.css";
+    import FormTemplate from "./formTemplate.svelte";
     export let personal_information = new PersonalInformation();
 </script>
 
 <body>
-    <div class="about-container">
-        <h2>Personal Information</h2>
-        <div class="about-grid">
-            <div>
-                <label for="first-name">First Name</label>
-                <input
-                    type="text"
-                    id="first-name"
-                    name="first-name"
-                    bind:value={personal_information.first_name}
-                />
-            </div>
-            <div>
-                <label for="last-name">Last Name</label>
-                <input
-                    type="text"
-                    id="last-name"
-                    name="last-name"
-                    bind:value={personal_information.last_name}
-                />
-            </div>
-
-            <div>
-                <label for="email">Email</label>
-                <input
-                    type="text"
-                    id="email"
-                    name="email"
-                    bind:value={personal_information.email}
-                />
-            </div>
-            <div>
-                <label for="phone">Phone Number:</label>
-                <input
-                    type="text"
-                    id="phone-number"
-                    name="phone-number"
-                    bind:value={personal_information.phone_number}
-                />
-            </div>
-            <div>
-                <label for="postion">Position</label>
-                <input
-                    type="text"
-                    id="position"
-                    name="position"
-                    bind:value={personal_information.position}
-                />
-            </div>
-            <div>
-                <label for="introduction">Introduction</label>
-                <textarea
-                    id="introduction"
-                    name="introduction"
-                    bind:value={personal_information.introduction}
-                />
-            </div>
+    
+<FormTemplate name = "Personal Information">
+    <div class="about-grid">
+        <div>
+            <label for="first-name">First Name</label>
+            <input
+                type="text"
+                id="first-name"
+                name="first-name"
+                bind:value={personal_information.first_name}
+            />
         </div>
-    </div></body
+        <div>
+            <label for="last-name">Last Name</label>
+            <input
+                type="text"
+                id="last-name"
+                name="last-name"
+                bind:value={personal_information.last_name}
+            />
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input
+                type="text"
+                id="email"
+                name="email"
+                bind:value={personal_information.email}
+            />
+        </div>
+        <div>
+            <label for="phone">Phone Number:</label>
+            <input
+                type="text"
+                id="phone-number"
+                name="phone-number"
+                bind:value={personal_information.phone_number}
+            />
+        </div>
+        <div>
+            <label for="postion">Position</label>
+            <input
+                type="text"
+                id="position"
+                name="position"
+                bind:value={personal_information.position}
+            />
+        </div>
+        <div>
+            <label for="introduction">Introduction</label>
+            <textarea
+                id="introduction"
+                name="introduction"
+                bind:value={personal_information.introduction}
+            />
+        </div>
+   
+</div>
+</FormTemplate>
+       </body
 >
 
 <style>

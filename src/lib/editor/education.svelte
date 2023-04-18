@@ -1,4 +1,5 @@
 <script>
+    import { slide } from "svelte/transition";
     import { Education } from "../../input_model";
     import "../../styles/form.css";
 
@@ -8,74 +9,86 @@
         educations = [...educations, new Education()];
     }
 
+    $: collapsed = true;
+    function toggleCollapse() {
+        collapsed = !collapsed;
+    }
+
+
     $: add_education;
 </script>
 
 <body>
     <div class="card-container">
-        <h2>Education</h2>
-        {#each educations as education, i}
-        <h3>Education {i + 1}</h3>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <h2 on:click={toggleCollapse}>Education</h2>
 
-        <div class="education-grid">
-            <div>
-                <label for="institution">Institution Name</label>
-                <input
-                    type="text"
-                    id="institution-name"
-                    name="institution-name"
-                    bind:value={education.institute_name}
-                />
-            </div>
-            <div>
-                <label for="field">Field of Study</label>
-                <input
-                    type="text"
-                    id="field"
-                    name="field"
-                    bind:value={education.field}
-                />
-            </div>
-            <div>
-                <label for="degree">Degree</label>
-                <input
-                    type="text"
-                    id="degree"
-                    name="degree"
-                    required
-                    bind:value={education.degree}
-                />
-            </div>
-            <div>
-                <label for="city">City</label>
-                <input
-                    type="text"
-                    id="city"
-                    name="city"
-                    bind:value={education.city}
-                />
-            </div>
-            <div>
-                <label for="country">Country</label>
-                <input
-                    type="text"
-                    id="country"
-                    name="country"
-                    bind:value={education.country}
-                />
-            </div>
-        </div>
-
-        {/each}
-        <button class="add_edu" on:click={add_education}>
-            Add Education
-        </button>
+        {#if !collapsed}
+            {#each educations as education, i}
+                <div class="form-container" transition:slide>
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <h3 >Education {i + 1}</h3>
+                    <div class="education-grid">
+                        <div>
+                            <label for="institution">Institution Name</label>
+                            <input
+                                type="text"
+                                id="institution-name"
+                                name="institution-name"
+                                bind:value={education.institute_name}
+                            />
+                        </div>
+                        <div>
+                            <label for="field">Field of Study</label>
+                            <input
+                                type="text"
+                                id="field"
+                                name="field"
+                                bind:value={education.field}
+                            />
+                        </div>
+                        <div>
+                            <label for="degree">Degree</label>
+                            <input
+                                type="text"
+                                id="degree"
+                                name="degree"
+                                required
+                                bind:value={education.degree}
+                            />
+                        </div>
+                        <div>
+                            <label for="city">City</label>
+                            <input
+                                type="text"
+                                id="city"
+                                name="city"
+                                bind:value={education.city}
+                            />
+                        </div>
+                        <div>
+                            <label for="country">Country</label>
+                            <input
+                                type="text"
+                                id="country"
+                                name="country"
+                                bind:value={education.country}
+                            />
+                        </div>
+                    </div>
+                </div>
+            {/each}
+            <button class="add_btn" on:click={add_education}>
+                Add Education
+            </button>
+        {/if}
     </div></body
 >
 
 <style>
     .education-grid {
         display: grid;
+        margin-top: 15px;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
         gap: 0 30px;
@@ -99,32 +112,12 @@
 
     h2 {
         padding: 0;
-        margin-top: 0;
+        margin: 0;
         font-weight: 400;
     }
     h3 {
         padding: 0;
-        margin-top: 0;
+        margin: 0;
         font-weight: 400;
-    }
-
-
-    .add_edu {
-        width: 100%;
-        padding: 15px;
-        background-color: antiquewhite;
-        background: none;
-        color: inherit;
-        border: 1px;
-        border-style: dashed;
-        border-color: black;
-
-        font: inherit;
-        cursor: pointer;
-        outline: inherit;
-    }
-
-    .add_edu:hover {
-        background-color: rgb(243, 243, 243);
     }
 </style>

@@ -53,3 +53,33 @@ textarea:focus {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     background-color: #ebebeb;
 }
+
+
+.add_btn {
+    width: 100%;
+    padding: 15px;
+    background-color: antiquewhite;
+    background: none;
+    color: inherit;
+    border: 1px;
+    border-style: dashed;
+    border-color: black;
+    margin-top: 20px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.add_btn:hover {
+    background-color: rgb(243, 243, 243);
+}
+
+
+.form-container{
+    background-color: rgba(240, 239, 239, 1);
+    padding: 20px;
+    border-radius: 5px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    overflow:hidden;
+    transition: height 0.3s ease;}

@@ -1,12 +1,15 @@
 <script>
     import { Address } from "../../input_model";
     import "../../styles/form.css";
+    import { slide } from "svelte/transition";
+    import FormTemplate from "./formTemplate.svelte";
+
     export let address = new Address();
+
 </script>
 
 <body>
-    <div class="address-container">
-        <h2>Address</h2>
+    <FormTemplate name="Address">
         <div class="address-grid">
             <div>
                 <label for="address-line-1">Address Line 1</label>
@@ -48,10 +51,13 @@
                 />
             </div>
         </div>
-    </div>
+    </FormTemplate>
 </body>
 
 <style>
+    p {
+        margin: 10px 0 0;
+    }
     .address-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -59,13 +65,7 @@
         gap: 0 30px;
     }
 
-    .address-container {
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-    }
-
+ 
     .address-grid > :nth-child(1) {
         grid-area: 1 / 1 / 2 / 3;
     }
@@ -79,9 +79,5 @@
         grid-area: 3 / 2 / 4 / 3;
     }
 
-    h2 {
-        padding: 0;
-        margin-top: 0;
-        font-weight: 400;
-    }
+
 </style>

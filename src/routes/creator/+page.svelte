@@ -57,15 +57,16 @@
 <style>
     .container {
         margin: 0px;
-        height: 100%;
+        height: 100vh;
         display: flex;
     }
 
     .editor {
-        height: 100vh;
+        height: 100%;
         box-sizing: border-box;
         overflow: scroll;
-        flex: 1 1 auto;
+        width: 600px;
+        /* flex: 1 1 auto; */
     }
 
     .output {
@@ -77,9 +78,9 @@
     }
 
     .preview {
-        width: 595px;
-        margin: 10px;
-        height: 842px;
+        overflow: scroll;
+        aspect-ratio: 1.414;
+        height:100%;
         border: 1px;
         border-color: black;
         border-style: solid;
