@@ -28,13 +28,13 @@
                 addDoc(collection(db, "users/" + $user?.uid + "/resumes/"), {
                     ...classToObject(new Resume()),
                    
-                    target_company: {company_name: "New Resume"}
+                    target_company: {company_name: "New Resume", position:""}
                 });
             }
 
             if ($user == null) {
                 goto("/");
-            }
+            }   
 
             else {
                 goto("/creator")

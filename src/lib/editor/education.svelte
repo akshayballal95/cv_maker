@@ -1,123 +1,117 @@
 <script>
     import { slide } from "svelte/transition";
     import { Education } from "../../input_model";
+    import FormCard from "./formCard.svelte";
+    import FormTemplate from "./formTemplate.svelte";
     import "../../styles/form.css";
 
     export let educations = [new Education()];
+    $: educations;
 
     function add_education() {
         educations = [...educations, new Education()];
     }
-
-    $: collapsed = true;
-    function toggleCollapse() {
-        collapsed = !collapsed;
-    }
-
-
-    $: add_education;
 </script>
 
 <body>
-    <div class="card-container">
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <h2 class="text-2xl" on:click={toggleCollapse}>Education</h2>
-
-        {#if !collapsed}
-            {#each educations as education, i}
-                <div class="form-container" transition:slide>
-                    <!-- svelte-ignore a11y-click-events-have-key-events -->
-                    <h3 >Education {i + 1}</h3>
-                    <div class="education-grid">
-                        <div>
-                            <label for="institution">Institution Name</label>
-                            <input
-                                type="text"
-                                id="institution-name"
-                                name="institution-name"
-                                bind:value={education.institute_name}
-                            />
-                        </div>
-                        <div>
-                            <label for="field">Field of Study</label>
-                            <input
-                                type="text"
-                                id="field"
-                                name="field"
-                                bind:value={education.field}
-                            />
-                        </div>
-                        <div>
-                            <label for="degree">Degree</label>
-                            <input
-                                type="text"
-                                id="degree"
-                                name="degree"
-                                required
-                                bind:value={education.degree}
-                            />
-                        </div>
-                        <div>
-                            <label for="city">City</label>
-                            <input
-                                type="text"
-                                id="city"
-                                name="city"
-                                bind:value={education.city}
-                            />
-                        </div>
-                        <div>
-                            <label for="country">Country</label>
-                            <input
-                                type="text"
-                                id="country"
-                                name="country"
-                                bind:value={education.country}
-                            />
-                        </div>
+    <FormCard name="Education">
+        {#each educations as education, i}
+            <FormTemplate name="Education" bind:items={educations} index={i}>
+                <div class="container grid grid-cols-2 grid-rows-3 gap-4">
+                    <div class="col-span-2">
+                        <label for="institution-name" class="label">
+                            <span class="label-text">Institution Name</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="institution-name"
+                            name="institution-name"
+                            bind:value={education.institute_name}
+                            class="input input-bordered w-full "
+                        />
                     </div>
-                </div>
-            {/each}
-            <button class="add_btn" on:click={add_education}>
-                Add Education
-            </button>
-        {/if}
-    </div></body
->
+                    <div>
+                        <label for="Field" class="label">
+                            <span class="label-text">Field of Study</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="field"
+                            name="field"
+                            bind:value={education.field}
+                            class="input input-bordered w-full max-w-xs"
+                        />
+                    </div>
+                    <div class="">
+                        <label for="degree" class="label">
+                            <span class="label-text">Degree</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="degree"
+                            name="degree"
+                            required
+                            bind:value={education.degree}
+                            class="input input-bordered w-full max-w-xs"
+                        />
+                    </div>
+                    <div>
+                        <label for="start-date" class="label">
+                            <span class="label-text">Start Date</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="start_date"
+                            name="start_date"
+                            bind:value={education.start_date}
+                            class="input input-bordered w-full max-w-xs"
+                        />
+                    </div>
+                    <div class="">
+                        <label for="end_date" class="label">
+                            <span class="label-text">End Date</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="end_date"
+                            name="end_date"
+                            required
+                            bind:value={education.end_date}
+                            class="input input-bordered w-full max-w-xs"
+                        />
+                    </div>
+                    <div class="">
+                        <label for="city" class="label">
+                            <span class="label-text">City</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            bind:value={education.city}
+                            class="input input-bordered w-full max-w-xs"
+                        />
+                    </div>
+                    <div>
+                        <label for="degree" class="label">
+                            <span class="label-text">Country</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="country"
+                            name="country"
+                            bind:value={education.country}
+                            class="input input-bordered w-full max-w-xs"
+                        />
+                    </div>
+                </div></FormTemplate
+            >
+            <div class="divider" />
+        {/each}
+        <button class="btn btn-outline w-full mt-5 border-dashed" on:click={add_education}> Add Education </button>
+
+    </FormCard>
+</body>
 
 <style>
-    .education-grid {
-        display: grid;
-        margin-top: 15px;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 0 30px;
-    }
-
-    .education-grid > :nth-child(1) {
-        grid-area: 1 / 1 / 2 / 3;
-    }
-    .education-grid > :nth-child(2) {
-        grid-area: 2 / 1 / 3 / 2;
-    }
-    .education-grid > :nth-child(3) {
-        grid-area: 2 / 2 / 3 / 3;
-    }
-    .education-grid > :nth-child(4) {
-        grid-area: 3 / 1 / 4 / 2;
-    }
-    .education-grid > :nth-child(5) {
-        grid-area: 3 / 2 / 4 / 3;
-    }
-
-    h2 {
-        padding: 0;
-        margin: 0;
-        font-weight: 400;
-    }
-    h3 {
-        padding: 0;
-        margin: 0;
-        font-weight: 400;
-    }
 </style>

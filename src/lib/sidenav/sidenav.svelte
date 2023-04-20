@@ -34,38 +34,45 @@
 
                 <div class="output"><Preview /></div>
             </div>
-
-           
         </div>
         <div class="drawer-side shadow-xl">
             <label for="my-drawer-2" class="drawer-overlay" />
 
-            <div class="menu p-4 w-80 bg-base-100 text-base-content space-y-3 h-full flex flex-col">
+            <div
+                class="menu p-4 w-80 bg-base-100 text-base-content space-y-3 h-full flex flex-col"
+            >
                 <button class="btn btn-outline mb-5 gap-2" on:click={addResume}
                     ><i class="fa-sharp fa-light fa-plus" /> Add Resume</button
                 >
                 <!-- Sidebar content here -->
+                {#if $resumes}
                 <div class="content grow">
                     {#each $resumes as res, i}
-                    <!-- svelte-ignore a11y-click-events-have-key-events -->
-                    <li
-                        on:click={() => {
-                            $selectedResume = res;
-                        }}
-                    >
-                        <!-- svelte-ignore a11y-missing-attribute -->
-                        <a class={$selectedResume.id == res.id ? "active" : ""}>
-                            <ResumeItem resume={res} /></a
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <li
+                            on:click={() => {
+                                $selectedResume = res;
+                            }}
                         >
-                    </li>
+                            <!-- svelte-ignore a11y-missing-attribute -->
+                            <a
+                                class="{$selectedResume.id == res.id
+                                    ? 'active'
+                                    : ''} " 
+                            >
+                                <ResumeItem resume={res} /></a
+                            >
+                        </li>
+
                     {/each}
                 </div>
-               
-              
-                <button class="btn btn-error  h-30 logout-btn" on:click={logout}>Logout</button>
+                {/if}
+                
 
-                </div>
-
+                <button class="btn btn-error h-30 logout-btn" on:click={logout}
+                    >Logout</button
+                >
+            </div>
         </div>
     </div></body
 >
@@ -82,7 +89,7 @@
         box-sizing: border-box;
         overflow-y: scroll;
         flex: 3 1 auto;
-        min-width: 600px;
+        min-width: 800px;
     }
 
     .output {
@@ -94,10 +101,9 @@
         flex: 3 1 auto;
     }
 
-    .logout-btn{
+    .logout-btn {
         margin-top: auto;
         justify-self: flex-end;
-     
     }
 
     @media (max-width: 850px) {

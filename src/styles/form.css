@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap');
-.card-container {
+/* .card-container {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* background-color: #fff; */
-}
+} */
 
 body {
     padding:0;
@@ -12,14 +11,16 @@ body {
     font-family: 'Roboto', sans-serif;
     
 }
-
-label {
+/* label {
     display: block;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 500;
-    margin-bottom: 5px;
+
     letter-spacing: 1px;
-}
+    color:black
+} */
+/* 
+
 
 input[type="text"],
 textarea {
@@ -81,10 +82,9 @@ h2:hover{
 
 
 .form-container{
-    /* background-color: rgba(240, 239, 239, 1); */
     padding: 20px;
     border-radius: 5px;
     margin-top:10px;
     margin-bottom: 10px;
     overflow:hidden;
-    transition: height 0.3s ease;}
+    transition: height 0.3s ease;} */

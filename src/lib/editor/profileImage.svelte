@@ -15,8 +15,9 @@
 </script>
 
 <body>
-    <div class="card-container">
-        <div id="app">
+    <div class="card w-full bg-base-100 shadow-xl">
+
+        <div class="card-body">
             <h2 class="text-2xl">Profile Image</h2>
 
             <button
@@ -35,6 +36,7 @@
                 bind:this={fileinput}
             />
         </div>
+     
     </div>
 </body>
 

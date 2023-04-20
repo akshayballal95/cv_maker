@@ -1,32 +1,27 @@
 <script lang="ts">
     import { slide } from "svelte/transition";
 
-    $: collapsed = true;
-    function toggleCollapse() {
-        collapsed = !collapsed;
-    }
-    export let name = "";
+    export let items: any[];
+    $: items;
+    export let index: any;
+    export let name: string;
 
-    let item: Education;
-    // import "../../styles/form.css";
-    import type { Education } from "../../input_model";
+    function delete_experience(i: number) {
+        console.log(i);
+        items = items.filter((e) => items.indexOf(e) != i);
+    }
 </script>
 
-<div class="card w-full bg-base-100 shadow-xl">
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="card-body">
-        <h2 class="text-2xl" on:click={toggleCollapse}>{name}</h2>
-
-        {#if !collapsed}
-            <div class="bg-base-300 form-container" transition:slide>
-                <slot />
-            </div>
-        {/if}
+<div class="form-container flex flex-col ">
+    <div class="flex justify-between items-center">
+        <h3 class="text-xl">{name} {index + 1}</h3>
+        <button
+            on:click={() => delete_experience(index)}
+            on:keydown={() => {}}
+            class="btn"
+        >
+            <i class="fa-solid fa-trash-can" /></button
+        >
     </div>
+    <slot />
 </div>
-
-<style>
-    /* .address-container {
-        padding: 30px;
-    } */
-</style>

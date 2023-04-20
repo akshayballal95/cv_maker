@@ -43,8 +43,11 @@
     {#if $loading == true}
         <div class="loading-container">
             <div>populating fields based on information provided</div>
-
-            <div class="loader">Loading...</div>
+            <div class="loader-container">
+                <div
+                    class="loader"
+                />
+            </div>
             <div>this may take a second...</div>
         </div>
     {/if}
@@ -91,7 +94,9 @@
             <div class="education-information">
                 {#each $selectedResume.education as education}
                     <div class="mariana-anderson-parent">
-                        <div class="mariana-anderson">2008</div>
+                        <div class="mariana-anderson">
+                            {education.start_date} - {education.end_date}
+                        </div>
                         <b class="bachelor-of-engineering"
                             >{education.institute_name}</b
                         >
@@ -145,7 +150,8 @@
                         <div class="mariana-anderson">
                             <b
                                 >{$selectedResume.personal_information
-                                    .first_name}</b><span>
+                                    .first_name}</b
+                            ><span>
                                 {$selectedResume.personal_information
                                     .last_name}</span
                             >
@@ -308,6 +314,7 @@
 
     .contact-header {
         width: 177px;
+        gap: 6px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -582,21 +589,22 @@
         border-style: solid;
     }
 
+
     .loading-container {
-        display: flex;
-        font-family: Lato;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.8);
-        width: 595px;
-        height: 842px;
         font-size: var(--font-size-lg);
         color: var(--color-white);
         font-family: var(--font-nunito);
-        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 595px;
+        height: 892px;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        z-index: 2;
     }
+
 
     .submit-button {
         display: inline-block;

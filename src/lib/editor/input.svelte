@@ -14,9 +14,16 @@
     import { user } from "$lib/stores/AuthStore";
     import TargetCompany from "./target_company.svelte";
     import { send_to_gpt } from "../../openai";
+    import { slide } from "svelte/transition";
+
+    $: showalert = false;
 
     async function updateResume() {
+        showalert = true;
         await updateResumeService($user?.uid!, $selectedResume);
+        setTimeout(() => {
+            showalert = false;
+        }, 2000);
     }
 
     let openAI_output = [];
@@ -53,13 +60,31 @@
 </script>
 
 <body>
+
     <div class="container">
-        <label
-        for="my-drawer-2"
-        class="btn btn-square drawer-button lg:hidden"
-        ><i class="fa-solid fa-bars fa-xl"></i></label
-    >
-        <div class="button-set">
+        {#if showalert}
+        <div transition:slide class="transition alert alert-success shadow-lg w-4/5 m-auto">
+            <div>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="stroke-current flex-shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    ><path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    /></svg
+                >
+                <span>Saved!</span>
+            </div>
+        </div>
+    {/if}
+        <label for="my-drawer-2" class="btn btn-square drawer-button lg:hidden"
+            ><i class="fa-solid fa-bars fa-xl" /></label
+        >
+        <div class="button-set flex align-items-center justify-between">
             <button class="btn btn-success gap-2" on:click={updateResume}>
                 <i class="fa-solid fa-floppy-disk" /> Save</button
             >
@@ -101,12 +126,12 @@
         gap: 20px;
     }
 
-    .button-set {
+    /* .button-set {
         align-self: flex-end;
         display: flex;
         align-items: center;
         gap: 20px;
-    }
+    } */
 
     /* Form fields */
 </style>

@@ -11,8 +11,6 @@
 
     let innerWidth = 0;
     let innerHeight = 0;
-
-
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
@@ -28,16 +26,8 @@
 </svelte:head>
 
 {#if $isLoading == false && $user}
-    <div class="container">
-            <Sidenav />
-         
-
-
-    </div>
+    <Sidenav />
 {/if}
 
 <style>
-
- 
-
 </style>

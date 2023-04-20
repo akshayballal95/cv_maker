@@ -58,12 +58,16 @@ export class Education {
     this.degree = "";
     this.city = "";
     this.country = "";
+    this.start_date = "";
+    this.end_date = "";
   }
 
   institute_name: string;
   field: string;
   degree: string;
   city: string;
+  start_date: string;
+  end_date:string;
   country: string;
 
 }
@@ -90,8 +94,10 @@ export class TargetCompany{
   constructor(){
     this.company_name = "";
     this.job_description = "";
+    this.position = " ";
   }
   company_name: string;
+  position: string;
   job_description: string
 }
 
