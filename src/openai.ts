@@ -8,7 +8,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-let suffix = "Bulleted List of improved job roles for each job with 4 bullet points \n also give an introduction based on the data provided in maximum of 50 words in first person\n consider the education and other previous job experiences for the above task \n Also consider the target job role \nalso give improved project descriptions\nimproved projects description should be 50 words\n this is the format of the output json file and should be followed strictly\n{\n'improved_job_roles':[\n'improvements:[]\n], 'projects': [\n'improvements':[]\n], 'introduction':  \n} \nOutput only json file without any other text \n limit each job description to 50 words "
+let suffix = "Bulleted List of improved job roles for each job with 4 bullet points \n also give an introduction based on the data provided in maximum of 50 words in first person\n consider the education and other previous job experiences for the above task \n Also consider the target job role \nalso give improved project descriptions\nimproved projects description should be 50 words\n strictly follow this json format for output and only output this json\n{\n'improved_job_roles':[\n'improved_job_descriptions:[]\n], 'projects': [\n'improved_project_descriptions':[]\n], 'introduction':  \n} \nOutput only json file without any other text \n limit each job description to 50 words "
 
 export async function send_to_gpt(prompt: string): Promise<any> {
     const completion = await openai.createChatCompletion({
