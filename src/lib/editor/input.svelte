@@ -73,8 +73,10 @@
         
         display: flex;
         flex-direction: column;
+        min-height: 100vh;
         margin: 0 auto;
         padding: 30px;
+        box-sizing: border-box;
         background-color: #fff;
         gap:20px;
     }
@@ -119,6 +121,8 @@
     .button-set{
         align-self: flex-end;
     }
+
+ 
 
     /* Form fields */
 </style>

@@ -45,7 +45,6 @@
 <body>
     <button class="submit-button" on:click={generatePDF}>Download</button>
 
-    <div id="resume" class="a4-1">
         {#if $loading == true}
             <div class="loading-container">
                 <div>populating fields based on information provided</div>
@@ -55,7 +54,7 @@
             </div>
         {/if}
 
-        <div class="a4-1">
+        <div id = "resume" class="a4-1">
             <div class="a4-1-child" />
 
             <div class="contact-header-parent">
@@ -228,14 +227,12 @@
                 />
             {/if}
         </div>
-    </div></body
+  
+</body
 >
 
 <style>
-    body {
-        margin: 0;
-        line-height: normal;
-    }
+
 
     :root {
         /* fonts */
@@ -385,7 +382,7 @@
         font-family: var(--font-lato);
     }
     .contact-information {
-        width: 239px;
+        width: 100%;
         font-size: var(--font-size-xs);
     }
     .education-header-child {
@@ -398,18 +395,25 @@
     }
     .bachelor-of-engineering,
     .birla-institute-of {
-        align-self: stretch;
+        width: 100%;
+        flex-wrap: wrap;
+        text-overflow:unset;
         position: relative;
         letter-spacing: 0.04em;
     }
     .bachelor-of-engineering {
         font-size: var(--font-size-xs);
+
+
+        overflow-wrap: break-word;
     }
     .birla-institute-of {
         font-family: var(--font-lato);
+        text-overflow:ellipsis;
+        overflow-wrap: break-word;
     }
     .education-information {
-        width: 239px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -462,6 +466,7 @@
         top: 169px;
         left: 19px;
         align-items: flex-start;
+        width: 178px;
         gap: 14px;
         font-size: var(--font-size-lg);
         color: var(--color-white);
@@ -579,8 +584,8 @@
         position: relative;
         background-color: var(--color-white);
         width: 595px;
-        aspect-ratio: 1/1.414;
-        /* height: 842px; */
+        /* aspect-ratio: 1/1.414; */
+        height: 842px;
         overflow: hidden;
         text-align: left;
         font-size: 32px;
