@@ -30,6 +30,7 @@ export async function getResumes(userId:string){
         querySnapshot.forEach((doc)=>
         r.push({...doc.data() as Resume, id:doc.id}))
         resumes.set(r)
+        selectedResume.set(r[0])
     })
 
 
