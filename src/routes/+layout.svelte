@@ -13,6 +13,7 @@
     } from "firebase/firestore";
     import { PersonalInformation, Resume } from "../input_model";
     import { classToObject } from "$lib/client/firestore";
+    import "$lib/app.css";
 
     onMount(() => {
         auth.onAuthStateChanged(async (currentUser) => {

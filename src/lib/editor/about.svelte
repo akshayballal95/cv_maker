@@ -16,6 +16,7 @@
                 id="first-name"
                 name="first-name"
                 bind:value={personal_information.first_name}
+                
             />
         </div>
         <div>

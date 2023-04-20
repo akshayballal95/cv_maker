@@ -17,7 +17,7 @@
 <body>
     <div class="card-container">
         <div id="app">
-            <h2>Profile Image</h2>
+            <h2 class="text-2xl">Profile Image</h2>
 
             <button
                 class="upload-button"

@@ -6,35 +6,27 @@
         collapsed = !collapsed;
     }
     export let name = "";
-   
-    let item:Education;
-    import "../../styles/form.css";
+
+    let item: Education;
+    // import "../../styles/form.css";
     import type { Education } from "../../input_model";
 </script>
 
-<div class="address-container">
+<div class="card w-full bg-base-100 shadow-xl">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <h2 on:click={toggleCollapse}>{name}</h2>
+    <div class="card-body">
+        <h2 class="text-2xl" on:click={toggleCollapse}>{name}</h2>
 
-    {#if !collapsed}
-        
-            <div class="form-container" transition:slide>
-                <slot/>
+        {#if !collapsed}
+            <div class="bg-base-300 form-container" transition:slide>
+                <slot />
             </div>
-        
-    {/if}
+        {/if}
+    </div>
 </div>
 
 <style>
-    h2 {
-        padding: 0;
-        margin: 0;
-        font-weight: 400;
-    }
-    .address-container {
+    /* .address-container {
         padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-    }
+    } */
 </style>

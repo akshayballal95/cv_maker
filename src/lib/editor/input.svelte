@@ -7,7 +7,7 @@
     import item from "../../resume.json";
     import ProfileImage from "./profileImage.svelte";
     import {
-    loading,
+        loading,
         selectedResume,
         updateResumeService,
     } from "$lib/stores/ResumeStore";
@@ -21,43 +21,64 @@
 
     let openAI_output = [];
 
-
     async function submit() {
-        
-        $loading = true;
-        openAI_output = await send_to_gpt(JSON.stringify({...$selectedResume,avatar:""}));
-        $loading = false;
+        try {
+            $loading = true;
+            openAI_output = await send_to_gpt(
+                JSON.stringify({ ...$selectedResume, avatar: "" })
+            );
+            $loading = false;
 
-        $selectedResume.personal_information.introduction = openAI_output.introduction;
-        console.log(openAI_output);
-        for (let i = 0; i < openAI_output.improved_job_roles.length; i++) {
-            $selectedResume.work_experience[i].description =
-                openAI_output.improved_job_roles[i].job_description.join("\n");
-        }
+            $selectedResume.personal_information.introduction =
+                openAI_output.introduction;
+            console.log(openAI_output);
+            for (let i = 0; i < openAI_output.improved_job_roles.length; i++) {
+                $selectedResume.work_experience[i].description =
+                    openAI_output.improved_job_roles[i].job_description.join(
+                        "\n"
+                    );
+            }
 
-        for (let i = 0; i < openAI_output.projects.length; i++) {
-            $selectedResume.projects[i].description =
-                openAI_output.projects[i].description;
+            for (let i = 0; i < openAI_output.projects.length; i++) {
+                $selectedResume.projects[i].description =
+                    openAI_output.projects[i].description;
+            }
+            console.log($selectedResume);
+            console.log(await send_to_gpt(JSON.stringify($selectedResume)));
+        } catch {
+            $loading = false;
         }
-        console.log($selectedResume);
-        console.log(await send_to_gpt(JSON.stringify($selectedResume)));
     }
     $: submit;
 </script>
 
 <body>
     <div class="container">
+        <label
+        for="my-drawer-2"
+        class="btn btn-square drawer-button lg:hidden"
+        ><i class="fa-solid fa-bars fa-xl"></i></label
+    >
         <div class="button-set">
-            <button class="save-button" on:click={updateResume}>
+            <button class="btn btn-success gap-2" on:click={updateResume}>
                 <i class="fa-solid fa-floppy-disk" /> Save</button
             >
-            <button class="submit-button" on:click={submit}>
-                Submit  <i class="fa-sharp fa-solid fa-arrow-right"></i></button
-            >
+
+            {#if $loading == true}
+                <button class="btn loading" on:click={submit}>
+                    Submit <i
+                        class="fa-sharp fa-solid fa-arrow-right"
+                    /></button
+                >
+            {:else}
+                <button class="btn btn-primary gap-2" on:click={submit}>
+                    <i class="fa-regular fa-share-from-square" /> Submit
+                </button>
+            {/if}
         </div>
 
         <TargetCompany bind:targetCompany={$selectedResume.target_company} />
-        <ProfileImage  bind:avatar={$selectedResume.avatar}/>
+        <ProfileImage bind:avatar={$selectedResume.avatar} />
         <About
             bind:personal_information={$selectedResume.personal_information}
         />
@@ -71,59 +92,21 @@
 <style>
     /* Container */
     .container {
-        
         display: flex;
         flex-direction: column;
         min-height: 100vh;
         margin: 0 auto;
         padding: 30px;
         box-sizing: border-box;
-        background-color: #fff;
-        gap:20px;
+        gap: 20px;
     }
 
-    .save-button {
-        display: inline-block;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        color: #333;
-        background-color: rgb(106, 192, 106);
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .save-button:hover {
-        background-color: #ccc;
-    }
-
-    .submit-button {
-        display: inline-block;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        color: #333;
-        background-color: orange;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .submit-button:hover {
-        background-color: #ccc;
-    }
-
-    .fa-floppy-disk {
-        margin-right: 10px;
-    }
-    .button-set{
+    .button-set {
         align-self: flex-end;
+        display: flex;
+        align-items: center;
+        gap: 20px;
     }
-
- 
 
     /* Form fields */
 </style>

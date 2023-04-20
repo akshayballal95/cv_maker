@@ -21,7 +21,7 @@
 <body>
     <div class="card-container">
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <h2 on:click={toggleCollapse}>Education</h2>
+        <h2 class="text-2xl" on:click={toggleCollapse}>Education</h2>
 
         {#if !collapsed}
             {#each educations as education, i}

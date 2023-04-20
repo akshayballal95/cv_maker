@@ -16,7 +16,8 @@ const config = {
 			runtime: 'nodejs18.x',
 		})
 
-	}
+	},
+	preprocess: vitePreprocess()
 };
 
 export default config;

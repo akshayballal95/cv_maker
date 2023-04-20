@@ -4,28 +4,25 @@
     import avatar from "$lib/assets/photo.png";
     import oip from "$lib/assets/default.jpg";
     import "../../styles/loader.css";
-    
 
     import html2canvas from "html2canvas";
     import jsPDF from "jspdf";
 
     function generatePDF() {
-        let d = document.getElementById("resume")
+        let d = document.getElementById("resume");
 
-        if(d!=null){
-            
+        if (d != null) {
             html2canvas(d, {
                 width: 595,
                 height: 842,
-                scale:6,
+                scale: 6,
             }).then((canvas) => {
-            var imgData = canvas.toDataURL("image/png");
-            var doc = new jsPDF("p", "mm");
-            doc.addImage(imgData, 'PNG', 0, 0, 200, 300);
-            doc.save("resume.pdf");
-        });
+                var imgData = canvas.toDataURL("image/png");
+                var doc = new jsPDF("p", "mm");
+                doc.addImage(imgData, "PNG", 0, 0, 210, 305);
+                doc.save("resume.pdf");
+            });
         }
-       
     }
 </script>
 
@@ -40,199 +37,189 @@
     />
 </svelte:head>
 
-
-
 <body>
     <button class="submit-button" on:click={generatePDF}>Download</button>
 
-        {#if $loading == true}
-            <div class="loading-container">
-                <div>populating fields based on information provided</div>
+    {#if $loading == true}
+        <div class="loading-container">
+            <div>populating fields based on information provided</div>
 
-                <div class="loader">Loading...</div>
-                <div>this may take a second...</div>
-            </div>
-        {/if}
-
-        <div id = "resume" class="a4-1">
-            <div class="a4-1-child" />
-
-            <div class="contact-header-parent">
-                <div class="contact-header">
-                    <b class="contact">Contact</b>
-                    <div class="education-header-child" />
-                </div>
-                <div class="contact-information">
-                    <div class="component-1">
-                        <b class="phone">Phone</b>
-                        <div class="div">
-                            {$selectedResume.personal_information.phone_number}
-                        </div>
-                    </div>
-                    <div class="component-2">
-                        <b class="phone"><p class="email">Email</p></b>
-                        <div class="div">
-                            {$selectedResume.personal_information.email}
-                        </div>
-                    </div>
-                    <div class="component-3">
-                        <b class="address">Address</b>
-                        <div class="mariana-anderson">
-                            {$selectedResume.address.address_line_1}
-                        </div>
-                        <div class="mariana-anderson">
-                            {$selectedResume.address.address_line_2}
-                        </div>
-                        <div class="mariana-anderson">
-                            {$selectedResume.address.city}: {$selectedResume
-                                .address.pincode}
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-header">
-                    <b class="contact">Education</b>
-                    <div class="education-header-child" />
-                </div>
-                <div class="education-information">
-                    {#each $selectedResume.education as education}
-                        <div class="mariana-anderson-parent">
-                            <div class="mariana-anderson">2008</div>
-                            <b class="bachelor-of-engineering"
-                                >{education.institute_name}</b
-                            >
-                            <div class="birla-institute-of">
-                                {education.degree}
-                            </div>
-                        </div>
-                    {/each}
-                </div>
-                <div class="contact-header">
-                    <b class="contact">Expertise</b>
-                    <div class="education-header-child" />
-                </div>
-                <div class="expertise-information">
-                    <b class="uiux"
-                        ><ul class="uiux1">
-                            <li class="uiux2">UI/UX</li>
-                        </ul></b
-                    ><b class="uiux"
-                        ><ul class="uiux1">
-                            <li class="uiux2">Wireframes</li>
-                        </ul></b
-                    ><b class="uiux"
-                        ><ul class="uiux1">
-                            <li class="uiux2">Storyboards</li>
-                        </ul></b
-                    ><b class="uiux"
-                        ><ul class="uiux1">
-                            <li class="uiux2">User Flows</li>
-                        </ul></b
-                    ><b class="uiux"
-                        ><ul class="uiux1">
-                            <li class="uiux2">Process Flows</li>
-                        </ul></b
-                    >
-                </div>
-                <div class="contact-header">
-                    <b class="contact">Languages</b>
-                    <div class="education-header-child" />
-                </div>
-                <div class="languages-information">
-                    <b class="uiux">English</b><b class="spanish"
-                        ><p class="email">Spanish</p></b
-                    >
-                </div>
-            </div>
-            <div class="frame-parent">
-                <div class="introduction-wrapper">
-                    <div class="introduction">
-                        <div class="mariana-anderson-parent">
-                            <div class="mariana-anderson">
-                                <b
-                                    >{$selectedResume.personal_information
-                                        .first_name}</b
-                                ><span>
-                                    {$selectedResume.personal_information
-                                        .last_name}</span
-                                >
-                            </div>
-                            <div class="marketing-manager">
-                                {$selectedResume.personal_information.position}
-                            </div>
-                        </div>
-                        <div class="lorem-ipsum-dolor">
-                            {$selectedResume.personal_information.introduction}
-                        </div>
-                    </div>
-                </div>
-                <header class="experience-parent">
-                    <b class="contact">Experience</b>
-                    <div class="frame-child" />
-                </header>
-                <div class="group-parent">
-                    <div class="instance-parent">
-                        {#each $selectedResume.work_experience as work, i}
-                            <div class="parent">
-                                <b class="b"
-                                    >{work.start_date} - {work.end_date}</b
-                                >
-                                <div class="company-name">
-                                    {work.company_name}
-                                </div>
-                                <b class="job-position-here">{work.job_title}</b
-                                >
-                                <ul
-                                    class="lorem-ipsum-dolor1"
-                                    style="padding-left: 10px; padding-top:0; margin-top:5px"
-                                >
-                                    {#each work.description.split("\n") as des, i}
-                                        <li>
-                                            {des}
-                                        </li>
-                                    {/each}
-                                </ul>
-                            </div>
-                        {/each}
-                    </div>
-                </div>
-                <header class="experience-parent">
-                    <b class="contact">Projects</b>
-                    <div class="frame-child" />
-                </header>
-                <div class="frame-group">
-                    {#each $selectedResume.projects as project, i}
-                        <div class="rolling-stone-ball-parent">
-                            <b class="job-position-here">{project.title}</b>
-                            <div class="div5">
-                                {project.start_date} - {project.end_date}
-                            </div>
-                            <div class="lorem-ipsum-dolor1">
-                                {project.description}
-                            </div>
-                        </div>
-                    {/each}
-                </div>
-            </div>
-            {#if $selectedResume.avatar}
-                <img
-                    class="photo-2022-11-07-12-51-02-1-icon"
-                    alt=""
-                    src={$selectedResume.avatar}
-                />
-            {:else}
-                <img
-                    class="photo-2022-11-07-12-51-02-1-icon"
-                    alt=""
-                    src={oip}
-                />
-            {/if}
+            <div class="loader">Loading...</div>
+            <div>this may take a second...</div>
         </div>
-  
-</body
->
+    {/if}
+
+    <div id="resume" class="a4-1">
+        <div class="a4-1-child" />
+
+        <div class="contact-header-parent">
+            <div class="contact-header">
+                <b class="contact">Contact</b>
+                <div class="education-header-child" />
+            </div>
+            <div class="contact-information">
+                <div class="component-1">
+                    <b class="phone">Phone</b>
+                    <div class="div">
+                        {$selectedResume.personal_information.phone_number}
+                    </div>
+                </div>
+                <div class="component-2">
+                    <b class="phone"><p class="email">Email</p></b>
+                    <div class="div">
+                        {$selectedResume.personal_information.email}
+                    </div>
+                </div>
+                <div class="component-3">
+                    <b class="address">Address</b>
+                    <div class="mariana-anderson">
+                        {$selectedResume.address.address_line_1}
+                    </div>
+                    <div class="mariana-anderson">
+                        {$selectedResume.address.address_line_2}
+                    </div>
+                    <div class="mariana-anderson">
+                        {$selectedResume.address.city}: {$selectedResume.address
+                            .pincode}
+                    </div>
+                </div>
+            </div>
+            <div class="contact-header">
+                <b class="contact">Education</b>
+                <div class="education-header-child" />
+            </div>
+            <div class="education-information">
+                {#each $selectedResume.education as education}
+                    <div class="mariana-anderson-parent">
+                        <div class="mariana-anderson">2008</div>
+                        <b class="bachelor-of-engineering"
+                            >{education.institute_name}</b
+                        >
+                        <div class="birla-institute-of">
+                            {education.degree}
+                        </div>
+                    </div>
+                {/each}
+            </div>
+            <div class="contact-header">
+                <b class="contact">Expertise</b>
+                <div class="education-header-child" />
+            </div>
+            <div class="expertise-information">
+                <b class="uiux"
+                    ><ul class="uiux1">
+                        <li class="uiux2">UI/UX</li>
+                    </ul></b
+                ><b class="uiux"
+                    ><ul class="uiux1">
+                        <li class="uiux2">Wireframes</li>
+                    </ul></b
+                ><b class="uiux"
+                    ><ul class="uiux1">
+                        <li class="uiux2">Storyboards</li>
+                    </ul></b
+                ><b class="uiux"
+                    ><ul class="uiux1">
+                        <li class="uiux2">User Flows</li>
+                    </ul></b
+                ><b class="uiux"
+                    ><ul class="uiux1">
+                        <li class="uiux2">Process Flows</li>
+                    </ul></b
+                >
+            </div>
+            <div class="contact-header">
+                <b class="contact">Languages</b>
+                <div class="education-header-child" />
+            </div>
+            <div class="languages-information">
+                <b class="uiux">English</b><b class="spanish"
+                    ><p class="email">Spanish</p></b
+                >
+            </div>
+        </div>
+        <div class="frame-parent">
+            <div class="introduction-wrapper">
+                <div class="introduction">
+                    <div class="mariana-anderson-parent">
+                        <div class="mariana-anderson">
+                            <b
+                                >{$selectedResume.personal_information
+                                    .first_name}</b><span>
+                                {$selectedResume.personal_information
+                                    .last_name}</span
+                            >
+                        </div>
+                        <div class="marketing-manager">
+                            {$selectedResume.personal_information.position}
+                        </div>
+                    </div>
+                    <div class="lorem-ipsum-dolor">
+                        {$selectedResume.personal_information.introduction}
+                    </div>
+                </div>
+            </div>
+            <header class="experience-parent">
+                <b class="contact">Experience</b>
+                <div class="frame-child" />
+            </header>
+            <div class="group-parent">
+                <div class="instance-parent">
+                    {#each $selectedResume.work_experience as work, i}
+                        <div class="parent">
+                            <b class="b">{work.start_date} - {work.end_date}</b>
+                            <div class="company-name">
+                                {work.company_name}
+                            </div>
+                            <b class="job-position-here">{work.job_title}</b>
+                            <ul
+                                class="lorem-ipsum-dolor1"
+                                style="padding-left: 10px; padding-top:0; margin-top:5px"
+                            >
+                                {#each work.description.split("\n") as des, i}
+                                    <li>
+                                        {des}
+                                    </li>
+                                {/each}
+                            </ul>
+                        </div>
+                    {/each}
+                </div>
+            </div>
+            <header class="experience-parent">
+                <b class="contact">Projects</b>
+                <div class="frame-child" />
+            </header>
+            <div class="frame-group">
+                {#each $selectedResume.projects as project, i}
+                    <div class="rolling-stone-ball-parent">
+                        <b class="job-position-here">{project.title}</b>
+                        <div class="div5">
+                            {project.start_date} - {project.end_date}
+                        </div>
+                        <div class="lorem-ipsum-dolor1">
+                            {project.description}
+                        </div>
+                    </div>
+                {/each}
+            </div>
+        </div>
+        {#if $selectedResume.avatar}
+            <img
+                class="photo-2022-11-07-12-51-02-1-icon"
+                alt=""
+                src={$selectedResume.avatar}
+            />
+        {:else}
+            <img class="photo-2022-11-07-12-51-02-1-icon" alt="" src={oip} />
+        {/if}
+    </div>
+</body>
 
 <style>
-
+    * {
+        all: revert;
+    }
 
     :root {
         /* fonts */
@@ -389,7 +376,7 @@
         align-self: stretch;
         position: relative;
         border-top: 1px solid var(--color-whitesmoke);
-        box-sizing: border-box;
+        /* box-sizing: border-box; */
         height: 1px;
         flex-shrink: 0;
     }
@@ -397,19 +384,18 @@
     .birla-institute-of {
         width: 100%;
         flex-wrap: wrap;
-        text-overflow:unset;
+        text-overflow: unset;
         position: relative;
         letter-spacing: 0.04em;
     }
     .bachelor-of-engineering {
         font-size: var(--font-size-xs);
 
-
         overflow-wrap: break-word;
     }
     .birla-institute-of {
         font-family: var(--font-lato);
-        text-overflow:ellipsis;
+        text-overflow: ellipsis;
         overflow-wrap: break-word;
     }
     .education-information {
@@ -628,5 +614,4 @@
     .submit-button:hover {
         background-color: #ccc;
     }
-
 </style>
