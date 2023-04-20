@@ -19,7 +19,7 @@
             }).then((canvas) => {
                 var imgData = canvas.toDataURL("image/png");
                 var doc = new jsPDF("p", "mm");
-                doc.addImage(imgData, "PNG", 0, 0, 210, 305);
+                doc.addImage(imgData, "PNG", 0, 0, 210, 300);
                 doc.save("resume.pdf");
             });
         }
@@ -234,8 +234,8 @@
         --font-inherit: inherit;
 
         /* font sizes */
-        --font-size-5xs: 9px;
-        --font-size-3xs: 11px;
+        --font-size-5xs: 8px;
+        --font-size-3xs: 10px;
         --font-size-xs: 12px;
         --font-size-mid: 17px;
         --font-size-lg: 18px;
@@ -528,12 +528,11 @@
         flex: 1;
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
+        gap: 10px;
     }
     .group-parent {
         flex-direction: row;
         align-items: center;
-        gap: 13px;
     }
     .rolling-stone-ball-parent {
         flex: 1;
@@ -599,7 +598,7 @@
         justify-content: center;
         align-items: center;
         width: 595px;
-        height: 892px;
+        height: 842px;
         background-color: rgba(0, 0, 0, 0.8);
         position: absolute;
         z-index: 2;

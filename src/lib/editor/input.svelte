@@ -41,14 +41,14 @@
             console.log(openAI_output);
             for (let i = 0; i < openAI_output.improved_job_roles.length; i++) {
                 $selectedResume.work_experience[i].description =
-                    openAI_output.improved_job_roles[i].job_description.join(
+                    openAI_output.improved_job_roles[i].improvements.join(
                         "\n"
                     );
             }
 
             for (let i = 0; i < openAI_output.projects.length; i++) {
                 $selectedResume.projects[i].description =
-                    openAI_output.projects[i].description;
+                    openAI_output.projects[i].improvements;
             }
             console.log($selectedResume);
             console.log(await send_to_gpt(JSON.stringify($selectedResume)));

@@ -21,7 +21,7 @@
             <h2 class="text-2xl">Profile Image</h2>
 
             <button
-                class="upload-button"
+                class="btn btn-outline"
                 on:click={() => {
                     fileinput.click();
                 }}
