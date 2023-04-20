@@ -604,7 +604,7 @@
         flex-direction: column;
         position: absolute;
         background-color: rgba(0, 0, 0, 0.8);
-        width: 100%;
+        width: 595px;
         height: 842px;
         font-size: var(--font-size-lg);
         color: var(--color-white);

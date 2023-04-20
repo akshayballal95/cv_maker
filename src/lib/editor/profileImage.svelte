@@ -2,7 +2,7 @@
     import Icon from "@iconify/svelte";
     import "../../styles/form.css";
 
-    let avatar: string;
+    export let avatar: string;
     let fileinput: any;
     const onFileSelected = (e: any) => {
         let image = e.target?.files[0];
@@ -47,25 +47,24 @@
         gap: 30px;
     }
 
-    .upload-button{
+    .upload-button {
         display: inline-block;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    background-color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        background-color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
     }
 
     .upload-button:hover {
-    background-color: #ccc;
-  }
-  
+        background-color: #ccc;
+    }
 
-  .fa-cloud-upload-alt {
-    margin-right: 10px;
-  }
+    .fa-cloud-upload-alt {
+        margin-right: 10px;
+    }
 </style>

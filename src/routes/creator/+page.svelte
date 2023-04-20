@@ -5,33 +5,14 @@
     import { loading, selectedResume } from "$lib/stores/ResumeStore";
     import { user, isLoading } from "$lib/stores/AuthStore";
     import Sidenav from "$lib/sidenav/sidenav.svelte";
+    import { get } from "svelte/store";
 
     let openAI_output = [];
 
-    let innerWidth = 0
-    let innerHeight = 0
+    let innerWidth = 0;
+    let innerHeight = 0;
 
-    async function showlog() {
-        $loading = true;
-        openAI_output = await send_to_gpt(JSON.stringify($selectedResume));
-        $loading = false;
 
-        $selectedResume.personal_information.introduction =
-            openAI_output.introduction;
-        console.log(openAI_output);
-        for (let i = 0; i < openAI_output.improved_job_roles.length; i++) {
-            $selectedResume.work_experience[i].description =
-                openAI_output.improved_job_roles[i].job_description.join("\n");
-        }
-
-        for (let i = 0; i < openAI_output.projects.length; i++) {
-            $selectedResume.projects[i].description =
-                openAI_output.projects[i].description;
-        }
-        console.log($selectedResume);
-        console.log(await send_to_gpt(JSON.stringify($selectedResume)));
-    }
-    $: showlog;
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />
@@ -48,9 +29,8 @@
 
 {#if $isLoading == false && $user}
     <div class="container">
-
-        {#if innerWidth>600}
-        <Sidenav   />
+        {#if innerWidth > 600}
+            <Sidenav />
         {/if}
 
         <div class="editor"><Input /></div>
@@ -87,22 +67,19 @@
         /* .editor {
             min-width: 400px;
         } */
-
     }
 
     @media (max-width: 450px) {
-        .container{
-            flex:none;
+        .container {
+            flex: none;
         }
         .editor {
-            flex:none;
-            min-width:0;
+            flex: none;
+            min-width: 0;
             width: 100vw;
-
         }
-        .output{
-            display:none
+        .output {
+            display: none;
         }
-    
     }
 </style>

@@ -23,8 +23,9 @@
 
 
     async function submit() {
+        
         $loading = true;
-        openAI_output = await send_to_gpt(JSON.stringify($selectedResume));
+        openAI_output = await send_to_gpt(JSON.stringify({...$selectedResume,avatar:""}));
         $loading = false;
 
         $selectedResume.personal_information.introduction = openAI_output.introduction;
@@ -56,7 +57,7 @@
         </div>
 
         <TargetCompany bind:targetCompany={$selectedResume.target_company} />
-        <ProfileImage  />
+        <ProfileImage  bind:avatar={$selectedResume.avatar}/>
         <About
             bind:personal_information={$selectedResume.personal_information}
         />
