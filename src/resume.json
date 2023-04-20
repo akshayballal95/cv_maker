@@ -1,68 +1,77 @@
 {
-    "id": "1",
-    "avatar": "",
-    "personal_information": {
-        "first_name": "Akshay",
-        "last_name": "Ballal",
-        "phone_number": "7762844196",
-        "introduction": "",
-        "position": "Chief Product Officer",
-        "email": "arballal95@gmail.com"
+  "personal_information": {
+    "introduction": "",
+    "position": "Chief Product Officer",
+    "phone_number": "7762844196",
+    "email": "arballal95@gmail.com",
+    "last_name": "Ballal",
+    "first_name": "Akshay"
+  },
+  "avatar": "",
+  "education": [
+    {
+      "country": "India",
+      "start_date": "2013",
+      "field": "Mechanical Engineering",
+      "degree": "Bachelor of Engineering",
+      "institute_name": "Birla Institute of Technology",
+      "city": "Ranchi",
+      "end_date": "2017"
+    }
+  ],
+  "address": {
+    "city": "Chennai",
+    "address_line_1": "C604, Emami Tejomaya",
+    "address_line_2": "OMR Egatur",
+    "pincode": "603103"
+  },
+  "projects": [
+    {
+      "start_date": "2017",
+      "description": "Build a new 3d printer that can print continuous fiber\nfull design from scratch\ntesting and analysis",
+      "title": "Continuous Fiber 3D Printer",
+      "end_date": "2018"
     },
-    "address": {
-        "address_line_1": "C604, Emami Tejomaya",
-        "address_line_2": "OMR, Egatur",
-        "city": "Chennai",
-        "pincode": "603103"
+    {
+      "description": "Designed a shock absorber that can absorb energy from road bumps and convert it into electricity",
+      "title": "Regenerative Shock absorber",
+      "start_date": "2016",
+      "end_date": "2017"
+    }
+  ],
+  "id": "Wge83PkyBViAm5Hk3zE9",
+  "target_company": {
+    "job_description": "Structural Analysis",
+    "company_name": "Tesla",
+    "position": "Mechanical Design Engineer"
+  },
+  "work_experience": [
+    {
+      "description": "Product Road map and strategies\nhiring\nIntellectual property\n7 Patents",
+      "end_date": "2018",
+      "job_title": "Chief Product Officer",
+      "start_date": "2017",
+      "city": "Chennai",
+      "country": "India",
+      "company_name": "Fabhead Automation"
     },
-    "education": [
-        {
-            "institute_name": "Birla Institute of Technology",
-            "field": "Mechanical Engineering",
-            "degree": "Bachelor of Engineering",
-            "city": "Ranchi",
-            "country": "India"
-        }
-    ],
-    "work_experience": [
-        {
-            "company_name": "Fabheads Automation",
-            "job_title": "Chief Product Officer",
-            "city": "Chennai",
-            "country": "India",
-            "start_date": "03/07/2017",
-            "end_date": "03/07/2023",
-            "description": "Product roadmaps and strategies\n7 patents in additive manufacturing\nreviews"
-        },
-        {
-            "company_name": "Fabheads Automation",
-            "job_title": "Mechanical Design Engineer",
-            "city": "Chennai",
-            "country": "India",
-            "start_date": "03/07/2017",
-            "end_date": "03/07/2023",
-            "description": "CAD Designs \nBOM \nDrawings"
-        },
-        {
-            "company_name": "Carnot Technologies",
-            "job_title": "Product Design Intern",
-            "city": "Chennai",
-            "country": "India",
-            "start_date": "03/07/2017",
-            "end_date": "03/07/2023",
-            "description": "Market Research \nThermal Analysis"
-        }
-    ],
-    "target_company": {
-        "company_name": "Open AI",
-        "job_description": "Put water"
+    {
+      "job_title": "Head Engineering",
+      "description": "Reviews\nproduct design\ndrawings",
+      "city": "2018",
+      "end_date": "2019",
+      "company_name": "Fabheads Automation",
+      "start_date": "2018",
+      "country": "2019"
     },
-    "projects": [
-        {
-            "title": "Rolling Stone Ball",
-            "start_date": "03/07/2017",
-            "end_date": "03/07/2023",
-            "description": ""
-        }
-    ]
+    {
+      "description": "Product Design\nThermal Analysis\nStructural Analysis\nFast Fourier transform",
+      "company_name": "Carnot Technologies",
+      "country": "India",
+      "start_date": "2016",
+      "job_title": "Product Design Intern",
+      "city": "Mumbai",
+      "end_date": "2017"
+    }
+  ]
 }

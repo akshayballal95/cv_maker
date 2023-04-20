@@ -56,7 +56,6 @@
             $loading = false;
         }
     }
-    $: submit;
 </script>
 
 <body>

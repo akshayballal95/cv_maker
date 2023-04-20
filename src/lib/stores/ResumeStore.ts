@@ -16,6 +16,7 @@ export async function addResumeFirestore(userId:string, resume:Resume){
     {...classToObject(resume), target_company:{company_name: "New Resume", position:""}} )
 }
 export async function updateResumeService(userId: string,  resume: Resume){
+    console.log(JSON.stringify({...resume, avatar:""}))
     await setDoc(doc(db,"users/"+userId+"/resumes/"+resume.id), classToObject(resume))
 }
 
