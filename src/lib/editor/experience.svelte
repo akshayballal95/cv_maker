@@ -18,86 +18,84 @@
 <body>
     <div class="card-container">
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <h2 on:click={toggleCollapse} >Work</h2>
+        <h2 on:click={toggleCollapse}>Work</h2>
         {#if !collapsed}
-        {#each work_exps as work, i}
-        <div  class="form-container" transition:slide>
+            {#each work_exps as work, i}
+                <div class="form-container" transition:slide>
+                    <h3>Experience {i + 1}</h3>
 
-            <h3>Experience {i + 1}</h3>
-            <div class="education-grid">
-                <div>
-                    <label for="institution">Company Name</label>
-                    <input
-                        type="text"
-                        id="institution-name"
-                        name="institution-name"
-                        bind:value={work.company_name}
-                    />
-                </div>
-                <div>
-                    <label for="job_title">Job Title</label>
-                    <input
-                        type="text"
-                        id="job_title"
-                        name="job_title"
-                        bind:value={work.job_title}
-                    />
-                </div>
-                <div>
-                    <label for="city">City</label>
-                    <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        bind:value={work.city}
-                    />
-                </div>
+                    <div class="education-grid">
+                        <div>
+                            <label for="institution">Company Name</label>
+                            <input
+                                type="text"
+                                id="institution-name"
+                                name="institution-name"
+                                bind:value={work.company_name}
+                            />
+                        </div>
+                        <div>
+                            <label for="job_title">Job Title</label>
+                            <input
+                                type="text"
+                                id="job_title"
+                                name="job_title"
+                                bind:value={work.job_title}
+                            />
+                        </div>
+                        <div>
+                            <label for="city">City</label>
+                            <input
+                                type="text"
+                                id="city"
+                                name="city"
+                                bind:value={work.city}
+                            />
+                        </div>
 
-                <div>
-                    <label for="country">Country</label>
-                    <input
-                        type="text"
-                        id="country"
-                        name="country"
-                        bind:value={work.country}
-                    />
+                        <div>
+                            <label for="country">Country</label>
+                            <input
+                                type="text"
+                                id="country"
+                                name="country"
+                                bind:value={work.country}
+                            />
+                        </div>
+                        <div>
+                            <label for="end_date">End Date</label>
+                            <input
+                                type="text"
+                                id="end_date"
+                                name="end_date"
+                                bind:value={work.end_date}
+                            />
+                        </div>
+                        <div>
+                            <label for="start_date">Start Date</label>
+                            <input
+                                type="text"
+                                id="start_date"
+                                name="start_date"
+                                bind:value={work.start_date}
+                            />
+                        </div>
+                        <div>
+                            <label for="description">Description</label>
+                            <textarea
+                                id="description"
+                                name="description"
+                                bind:value={work.description}
+                            />
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label for="end_date">End Date</label>
-                    <input
-                        type="text"
-                        id="end_date"
-                        name="end_date"
-                        bind:value={work.end_date}
-                    />
-                </div>
-                <div>
-                    <label for="start_date">Start Date</label>
-                    <input
-                        type="text"
-                        id="start_date"
-                        name="start_date"
-                        bind:value={work.start_date}
-                    />
-                </div>
-                <div>
-                    <label for="description">Description</label>
-                    <textarea
-                        id="description"
-                        name="description"
-                        bind:value={work.description}
-                    />
-                </div>
-            </div>
-        </div>
+            {/each}
 
-        {/each}
-        
-        <button class="add_btn" on:click={add_experience}>
-            Add Experience
-        </button>
+            <button class="add_btn" on:click={add_experience}>
+                Add Experience
+            </button>
         {/if}
-
     </div></body
 >
 
@@ -142,6 +140,4 @@
         margin-top: 0;
         font-weight: 400;
     }
-
-    
 </style>
