@@ -14,7 +14,7 @@
     />
 
     <div class="flex flex-col pl-4 mt-2 gap-2">
-        <div class="contact flex flex-col gap-2">
+        <div class="contact flex flex-col">
             <h1 class="text-lg">Contact</h1>
             <hr class="h-px  border-0 bg-white" />
 
@@ -46,7 +46,7 @@
     </div>
 
     <div class="flex flex-col pl-4 mt-2 gap-2">
-        <div class="contact flex flex-col gap-2">
+        <div class="contact flex flex-col">
             <h1 class="text-lg">Education</h1>
             <hr class="h-px  border-0 bg-white" />
         </div>
@@ -69,7 +69,7 @@
         {/each}
     </div>
     <div class="flex flex-col pl-4 mt-2 gap-2">
-        <div class="contact flex flex-col gap-2">
+        <div class="contact flex flex-col">
             <h1 class="text-lg">Expertise</h1>
             <hr class="h-px  border-0 bg-white" />
         </div>
@@ -82,7 +82,7 @@
     </div>
 
     <div class="flex flex-col pl-4 mt-2 gap-2">
-        <div class="contact flex flex-col gap-2">
+        <div class="contact flex flex-col">
             <h1 class="text-lg">Languages</h1>
             <hr class="h-px  border-0 bg-white" />
         </div>

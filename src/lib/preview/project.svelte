@@ -7,7 +7,7 @@
 {#each selectedResume.projects as project}
     <div class=" flex flex-col">
         <div class="flex flex-row">
-            <p class="text-[12px] font-bold text-[#4e4d4d]">
+            <p class="text-[12px] font-bold text-[#2f3c55]">
                 {project.title}
             </p>
 

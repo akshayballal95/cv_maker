@@ -18,7 +18,7 @@
 </script>
 
 <body>
-    <div on:click={selectResume} on:keydown={() => {}} class="container w-full">
+    <div on:click={selectResume} on:keydown={() => {}} class="w-full">
         <!-- svelte-ignore a11y-invalid-attribute -->
 
         <i class="fa-solid fa-file" /><p class="truncate w-14 grow"
