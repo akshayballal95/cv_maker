@@ -1,6 +1,5 @@
 <script>
     import { TargetCompany } from "../../input_model";
-    import "../../styles/form.css";
     import FormCard from "./formCard.svelte";
     export let targetCompany = new TargetCompany();
 </script>

@@ -1,7 +1,5 @@
 <script>
     import { Address } from "../../input_model";
-    import "../../styles/form.css";
-    import { slide } from "svelte/transition";
     import FormCard from "./formCard.svelte";
 
     export let address = new Address();

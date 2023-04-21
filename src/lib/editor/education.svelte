@@ -2,8 +2,6 @@
     import { Education } from "../../input_model";
     import FormCard from "./formCard.svelte";
     import FormTemplate from "./formTemplate.svelte";
-    import "../../styles/form.css";
-
     export let educations = [new Education()];
     $: educations;
 

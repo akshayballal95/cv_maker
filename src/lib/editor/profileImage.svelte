@@ -1,5 +1,4 @@
 <script lang="ts">
-    import "../../styles/form.css";
 
     export let avatar: string;
     let fileinput: any;

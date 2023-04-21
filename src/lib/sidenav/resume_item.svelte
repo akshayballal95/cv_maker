@@ -5,7 +5,6 @@
         selectedResume,
     } from "$lib/stores/ResumeStore";
     import type { Resume } from "../../input_model";
-    import "../../styles/form.css";
 
     export let resume: Resume;
 

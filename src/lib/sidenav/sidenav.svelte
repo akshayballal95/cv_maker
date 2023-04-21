@@ -1,13 +1,13 @@
 <script lang="ts">
     import { authHandlers, user } from "$lib/stores/AuthStore";
     import { onMount } from "svelte";
-    import { selectedResume } from "../stores/ResumeStore";
+    import { selectedResume } from "$lib/stores/ResumeStore";
     import Input from "$lib/editor/input.svelte";
     import {
         getResumes,
         resumes,
         addResumeFirestore,
-    } from "../stores/ResumeStore";
+    } from "$lib/stores/ResumeStore";
     import ResumeItem from "./resume_item.svelte";
     import logo from "$lib/assets/resuMatic.png";
     import Preview from "$lib/preview/preview.svelte";
@@ -40,7 +40,7 @@
             <label for="my-drawer-2" class="drawer-overlay" />
 
             <div
-                class="menu p-4  w-72 bg-base-100 text-base-content space-y-3 h-full flex flex-col"
+                class="menu p-4 w-72 bg-base-100 text-base-content space-y-3 h-full flex flex-col"
             >
                 <img src={logo} alt="" />
                 <button class="btn btn-outline mb-5 gap-2" on:click={addResume}
@@ -70,8 +70,8 @@
                 {/if}
 
                 <button class="btn btn-outline h-30" on:click={logout}
-                >My Account</button
-            >
+                    >My Account</button
+                >
 
                 <button class="btn btn-error h-30 logout-btn" on:click={logout}
                     >Logout</button
@@ -97,7 +97,6 @@
     }
 
     .output {
-        
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -111,7 +110,7 @@
     }
 
     @media (max-width: 850px) {
-        .output{
+        .output {
             display: none;
         }
         /* .editor {

@@ -1,6 +1,5 @@
 <script>
     import { PersonalInformation } from "../../input_model";
-    import "../../styles/form.css";
     import FormCard from "./formCard.svelte";
     export let personal_information = new PersonalInformation();
 </script>

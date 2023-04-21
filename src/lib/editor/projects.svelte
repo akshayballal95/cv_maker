@@ -1,6 +1,5 @@
 <script lang="ts">
     import { Project } from "../../input_model";
-    import "../../styles/form.css";
     import FormCard from "./formCard.svelte";
     import FormTemplate from "./formTemplate.svelte";
     let exp1: Project = new Project();

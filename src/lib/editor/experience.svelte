@@ -1,6 +1,5 @@
 <script lang="ts">
     import { WorkExperience } from "../../input_model";
-    import "../../styles/form.css";
     import FormCard from "./formCard.svelte";
     import FormTemplate from "./formTemplate.svelte";
     let exp1: WorkExperience = new WorkExperience();

@@ -114,7 +114,6 @@ class Resume {
 let loading = writable(false);
 let selectedResume = writable(new Resume());
 let resumes = writable([]);
-const form = "";
 const FormCard = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let collapsed;
   let { name = "" } = $$props;
@@ -679,7 +678,6 @@ const Resume_item = create_ssr_component(($$result, $$props, $$bindings, slots) 
 </body>`;
 });
 const logo = "/_app/immutable/assets/ResuMatic.682e69c6.png";
-const loader = "";
 const Preview = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $selectedResume, $$unsubscribe_selectedResume;
   $$unsubscribe_selectedResume = subscribe(selectedResume, (value) => $selectedResume = value);
