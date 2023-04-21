@@ -10,6 +10,7 @@
     import Experience from "$lib/preview/experience.svelte";
     import Project from "$lib/preview/project.svelte";
     import { slide } from "svelte/transition";
+    import PreviewContainer from "./previewContainer.svelte";
 
     function generatePDF() {
         let d = document.getElementById("resume");
@@ -43,33 +44,7 @@
         >Download <i class="fa-solid fa-download ml-2"></i></button
     >
 
-    <div
-        id="resume"
-        class="container border-black border-solid border-2 h-[842px] w-[595px] flex  "
-    >
-        <LeftSide bind:selectedResume={$selectedResume} />
-        <div
-            class=" w-[400px] pt-8 pl-4 pr-4 pb-8 font-Lato flex flex-col gap-4 justify-between text-[#6f6d6d]"
-        >
-            <Introduction bind:selectedResume={$selectedResume} />
-            <div class="flex flex-col gap-2">
-                <div class="flex flex-col">
-                    <h1 class="text-[#2f3c55] font-semibold">Experience</h1>
-
-                    <hr class="h-px border-0 bg-gray-900" />
-                </div>
-                <Experience bind:selectedResume={$selectedResume} />
-            </div>
-
-            <div class="flex flex-col gap-2">
-                <div class="flex flex-col">
-                    <h1 class="text-[#2f3c55] font-semibold">Projects</h1>
-                    <hr class="h-px border-0 bg-gray-900" />
-                </div>
-                <Project bind:selectedResume={$selectedResume} />
-            </div>
-        </div>
-    </div>
+   <PreviewContainer bind:selectedResume = {$selectedResume}></PreviewContainer>
 </body>
 
 <style>

@@ -32,7 +32,7 @@
         <div class="drawer-content flex flex-col items-center justify-center">
             <!-- Page content here -->
             <div class="container">
-                <div class="editor grow"><Input /></div>
+                <div class="editor"><Input /></div>
 
                 <div class="output"><PreviewCopy /></div>
             </div>
@@ -112,6 +112,9 @@
     }
 
     @media (max-width: 850px) {
+        .output{
+            display: none;
+        }
         /* .editor {
             min-width: 400px;
         } */

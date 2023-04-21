@@ -15,8 +15,37 @@
     import TargetCompany from "./target_company.svelte";
     import { send_to_gpt } from "../../openai";
     import { slide } from "svelte/transition";
+    import Preview from "$lib/preview/preview.svelte";
+    import PreviewContainer from "$lib/preview/previewContainer.svelte";
+    import html2canvas from "html2canvas";
+    import jsPDF from "jspdf";
 
     $: showalert = false;
+    $: preview = false;
+    $: image = "";
+
+    async function previewCall() {
+        preview = !preview;
+
+        let d = document.getElementById("res");
+        d?.classList.remove("hidden");
+        console.log(d);
+
+        d?.classList.replace("scale-75", "scale-100");
+        if (d != null) {
+            html2canvas(d, {
+                allowTaint: true,
+                width: 595,
+                height: 842,
+                scale: 3,
+            }).then((canvas) => {
+                canvas.getContext("2d");
+                image = canvas.toDataURL("../assets/png");
+                console.log(image);
+                d?.classList.add("hidden");
+            });
+        }
+    }
 
     async function updateResume() {
         showalert = true;
@@ -115,6 +144,7 @@
         <label for="my-drawer-2" class="btn btn-square drawer-button lg:hidden"
             ><i class="fa-solid fa-bars fa-xl" /></label
         >
+
         <div class="button-set flex align-items-center justify-between">
             <button class="btn btn-success gap-2" on:click={updateResume}>
                 <i class="fa-solid fa-floppy-disk" /> Save</button
@@ -142,6 +172,17 @@
         <Education bind:educations={$selectedResume.education} />
         <Experience bind:work_exps={$selectedResume.work_experience} />
         <Projects bind:projects={$selectedResume.projects} />
+
+        <button class="btn drawer-button lg:hidden" on:click={previewCall}
+            >Preview</button
+        >
+
+        <div id="res" class="hidden">
+            <PreviewContainer bind:selectedResume={$selectedResume} />
+        </div>
+        {#if preview}
+            <img class="lg:hidden" alt="" src={image} />
+        {/if}
     </div>
 </body>
 
