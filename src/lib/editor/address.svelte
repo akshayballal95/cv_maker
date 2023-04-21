@@ -10,16 +10,16 @@
 
 <body>
     <FormCard name="Address">
-        <div class="grid grid-cols-2 gap-4">
+        <div class="lg:grid grid-cols-2 gap-4">
             <div class="col-span-2">
                 <label for="address-line-1" class="label">
                     <span class="label-text">Address Line 1</span>
-                </label>                <input
+                </label>                <input 
                     type="text"
                     id="address-line-1"
                     name="address-line-1"
                     bind:value={address.address_line_1}
-                    class="input input-bordered w-full"
+                    class="input input-bordered w-full "
 
                 />
             </div>

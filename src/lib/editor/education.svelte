@@ -17,7 +17,7 @@
     <FormCard name="Education">
         {#each educations as education, i}
             <FormTemplate name="Education" bind:items={educations} index={i}>
-                <div class="container grid grid-cols-2 grid-rows-3 gap-4">
+                <div class="container lg:grid grid-cols-2 grid-rows-3 gap-4">
                     <div class="col-span-2">
                         <label for="institution-name" class="label">
                             <span class="label-text">Institution Name</span>

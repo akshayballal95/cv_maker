@@ -18,7 +18,7 @@
         <h2 class="text-2xl cursor-pointer" on:click={toggleCollapse}>{name}</h2>
 
         {#if !collapsed}
-            <div class="bg-base-300 form-container rounded p-10" transition:slide>
+            <div class="lg:bg-base-300 lg:rounded lg:p-10" transition:slide>
                 <slot />
             </div>
         {/if}

@@ -21,7 +21,7 @@
     <FormCard name="Projects">
         {#each projects as project, i}
             <FormTemplate name="Projects" bind:items={projects} index={i}>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="lg:grid grid-cols-2 gap-4">
                     <div class="col-span-2">
                         <label for="title" class="label">
                             <span class="label-text">Title</span>

@@ -7,7 +7,7 @@
 
 <body>
     <FormCard name="Personal Information">
-        <div class="grid grid-cols-2 gap-4">
+        <div class="lg:grid grid-cols-2 gap-4">
             <div>
                 <label for="first-name" class="label">
                     <span class="label-text">First Name</span>

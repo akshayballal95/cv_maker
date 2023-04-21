@@ -7,7 +7,7 @@
 
 <body>
     <FormCard name="Target Company">
-        <div class="grid grid-rows-2 grid-cols-2 gap-4">
+        <div class="lg:grid grid-rows-2 grid-cols-2 gap-4">
             <div>
                 <label for="company_name" class="label">
                     <span class="label-text">Company Name</span>

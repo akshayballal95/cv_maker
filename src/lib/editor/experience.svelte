@@ -27,7 +27,7 @@
             {#each work_exps as work, i}
             <FormTemplate name="Experience" bind:items = {work_exps} index = {i}>
          
-                <div class="container grid grid-rows-4 grid-cols-2 gap-4">
+                <div class="lg:grid grid-rows-4 grid-cols-2 gap-4">
                     <div class="col-span-2">
                         <label for = "company-name" class="label">
                             <span class="label-text">Company Name</span>
