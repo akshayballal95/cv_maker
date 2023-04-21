@@ -41,30 +41,7 @@
 </body>
 
 <style>
-    #app {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        flex-direction: row;
-        gap: 30px;
-    }
 
-    .upload-button {
-        display: inline-block;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        color: #333;
-        background-color: #fff;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .upload-button:hover {
-        background-color: #ccc;
-    }
 
     .fa-cloud-upload-alt {
         margin-right: 10px;

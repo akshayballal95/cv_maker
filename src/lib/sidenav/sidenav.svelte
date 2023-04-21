@@ -3,13 +3,15 @@
     import { onMount } from "svelte";
     import { selectedResume } from "../stores/ResumeStore";
     import Input from "$lib/editor/input.svelte";
-    import Preview from "$lib/preview/preview.svelte";
+    import Preview from "$lib/preview/preview_backup.svelte";
     import {
         getResumes,
         resumes,
         addResumeFirestore,
     } from "../stores/ResumeStore";
     import ResumeItem from "./resume_item.svelte";
+    import Previewcopy from "$lib/preview/preview.svelte";
+    import PreviewCopy from "$lib/preview/preview.svelte";
 
     async function logout() {
         await authHandlers.logout();
@@ -32,7 +34,7 @@
             <div class="container">
                 <div class="editor"><Input /></div>
 
-                <div class="output"><Preview /></div>
+                <div class="output"><PreviewCopy /></div>
             </div>
         </div>
         <div class="drawer-side shadow-xl">
@@ -88,17 +90,17 @@
         height: 100%;
         box-sizing: border-box;
         overflow-y: scroll;
-        flex: 3 1 auto;
-        min-width: 800px;
+        flex: 4 1 auto;
+        min-width: 600px;
     }
 
     .output {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-content: center;
         align-items: center;
-        flex: 3 1 auto;
+        padding: 20px;
+        overflow-y: scroll;
+
     }
 
     .logout-btn {

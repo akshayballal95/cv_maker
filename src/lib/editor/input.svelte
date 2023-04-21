@@ -125,12 +125,5 @@
         gap: 20px;
     }
 
-    /* .button-set {
-        align-self: flex-end;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    } */
-
-    /* Form fields */
+ 
 </style>

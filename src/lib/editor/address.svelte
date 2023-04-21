@@ -67,29 +67,7 @@
 </body>
 
 <style>
-    p {
-        margin: 10px 0 0;
-    }
-    .address-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 0 30px;
-    }
-
- 
-    .address-grid > :nth-child(1) {
-        grid-area: 1 / 1 / 2 / 3;
-    }
-    .address-grid > :nth-child(2) {
-        grid-area: 2 / 1 / 3 / 3;
-    }
-    .address-grid > :nth-child(3) {
-        grid-area: 3 / 1 / 4 / 2;
-    }
-    .address-grid > :nth-child(4) {
-        grid-area: 3 / 2 / 4 / 3;
-    }
+   
 
 
 </style>
