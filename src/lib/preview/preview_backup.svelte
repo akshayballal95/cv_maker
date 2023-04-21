@@ -1,7 +1,5 @@
 <script>
     import { loading, selectedResume } from "$lib/stores/ResumeStore";
-    // import type { Resume } from "../../input_model";
-    import avatar from "$lib/assets/photo.png";
     import oip from "$lib/assets/default.jpg";
     import "../../styles/loader.css";
 

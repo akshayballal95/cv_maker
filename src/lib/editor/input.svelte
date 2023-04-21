@@ -4,7 +4,6 @@
     import Education from "./education.svelte";
     import Experience from "./experience.svelte";
     import Projects from "$lib/editor/projects.svelte";
-    import item from "../../resume.json";
     import ProfileImage from "./profileImage.svelte";
     import {
         loading,
@@ -15,10 +14,8 @@
     import TargetCompany from "./target_company.svelte";
     import { send_to_gpt } from "../../openai";
     import { slide } from "svelte/transition";
-    import Preview from "$lib/preview/preview.svelte";
     import PreviewContainer from "$lib/preview/previewContainer.svelte";
     import html2canvas from "html2canvas";
-    import jsPDF from "jspdf";
 
     $: showalert = false;
     $: preview = false;

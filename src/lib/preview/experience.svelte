@@ -26,18 +26,3 @@
         </ul>
     </div>
 {/each}
-
-<style
-
->
-/* ul{
-    all:initial;
-    list-style-type: circle;
-    margin-left: 0.5rem;
-}
-li{
-    font-size: 9px;
-
-} */
-
-</style>

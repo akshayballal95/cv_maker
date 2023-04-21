@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Icon from "@iconify/svelte";
     import "../../styles/form.css";
 
     export let avatar: string;

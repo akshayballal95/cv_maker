@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { slide } from "svelte/transition";
     import { Project } from "../../input_model";
     import "../../styles/form.css";
     import FormCard from "./formCard.svelte";
@@ -9,11 +8,6 @@
     $: projects;
     function add_project() {
         projects = [...projects, new Project()];
-    }
-
-    $: collapsed = true;
-    function toggleCollapse() {
-        collapsed = !collapsed;
     }
 </script>
 

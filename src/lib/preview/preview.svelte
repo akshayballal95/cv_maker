@@ -1,15 +1,11 @@
 <script>
-    import { loading, resumes, selectedResume } from "$lib/stores/ResumeStore";
+    import {  selectedResume } from "$lib/stores/ResumeStore";
 
     import "../../styles/loader.css";
 
     import html2canvas from "html2canvas";
     import jsPDF from "jspdf";
-    import LeftSide from "./left_side.svelte";
-    import Introduction from "./introduction.svelte";
-    import Experience from "$lib/preview/experience.svelte";
-    import Project from "$lib/preview/project.svelte";
-    import { slide } from "svelte/transition";
+ 
     import PreviewContainer from "./previewContainer.svelte";
 
     function generatePDF() {

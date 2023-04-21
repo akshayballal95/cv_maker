@@ -1,5 +1,4 @@
 <script>
-    import { slide } from "svelte/transition";
     import { Education } from "../../input_model";
     import FormCard from "./formCard.svelte";
     import FormTemplate from "./formTemplate.svelte";
