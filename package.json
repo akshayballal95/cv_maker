@@ -29,10 +29,12 @@
 	"dependencies": {
 		"@sveltejs/adapter-vercel": "^2.4.2",
 		"daisyui": "^2.51.5",
+		"encoding": "^0.1.13",
 		"firebase": "^9.19.1",
-		"html2pdf.js": "^0.9.3",
+		"html2pdf.js": "^0.10.1",
 		"jspdf": "^2.5.1",
 		"openai": "^3.2.1",
+		"supports-color": "^9.3.1",
 		"svelte-html2pdf": "^1.0.0"
 	}
 }
