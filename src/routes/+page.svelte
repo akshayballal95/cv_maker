@@ -8,7 +8,7 @@
         goto("/creator");
     }
 </script>
-
+<!-- 
 <svelte:head>
     <link
         rel="stylesheet"
@@ -17,7 +17,7 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     />
-</svelte:head>
+</svelte:head> -->
 
 {#if !$user}
 <div class="container">

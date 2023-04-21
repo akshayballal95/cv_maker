@@ -8,33 +8,33 @@
     import { classToObject } from "$lib/client/firestore";
     import "$lib/app.css";
 
-    onMount(() => {
-        auth.onAuthStateChanged(async (currentUser) => {
-            $user = currentUser;
-            $isLoading = false;
+    // onMount(() => {
+    //     auth.onAuthStateChanged(async (currentUser) => {
+    //         $user = currentUser;
+    //         $isLoading = false;
 
-            const q = query(collection(db, "users/" + $user?.uid + "/resumes"));
+    //         const q = query(collection(db, "users/" + $user?.uid + "/resumes"));
 
-            const querySnapshot = await getDocs(q);
+    //         const querySnapshot = await getDocs(q);
 
-            if (querySnapshot.empty && $user) {
-                addDoc(collection(db, "users/" + $user?.uid + "/resumes/"), {
-                    ...classToObject(new Resume()),
+    //         if (querySnapshot.empty && $user) {
+    //             addDoc(collection(db, "users/" + $user?.uid + "/resumes/"), {
+    //                 ...classToObject(new Resume()),
 
-                    target_company: {
-                        company_name: "New Resume",
-                        position: "",
-                    },
-                });
-            }
+    //                 target_company: {
+    //                     company_name: "New Resume",
+    //                     position: "",
+    //                 },
+    //             });
+    //         }
 
-            if ($user == null) {
-                goto("/");
-            } else {
-                goto("/creator");
-            }
-        });
-    });
+    //         if ($user == null) {
+    //             goto("/");
+    //         } else {
+    //             goto("/creator");
+    //         }
+    //     });
+    // });
 </script>
 
 <slot />
