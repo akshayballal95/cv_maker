@@ -22,7 +22,7 @@
 {#if !$user}
 <div class="container">
     <div class="branding">
-        <h1 class="brand-heading">ResumeGenius</h1>
+        <h1 class="brand-heading">Resumagic</h1>
         <p class="brand-text">
             Create the perfect resume in seconds with our AI-powered resume
             generator
